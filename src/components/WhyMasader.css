@@ -1,0 +1,389 @@
+/* ==========================================================================
+   Section 4: Why Masader (.mx-why, Theme: Light #EFF5ED)
+   ========================================================================== */
+
+:root {
+  --mxw-bg: #EFF5ED;
+  --mxw-ink: #091D0D;
+  --mxw-sub: #839085;
+  --mxw-body: #516055;
+  --mxw-leaf: #9DCB5B;
+  --mxw-gold: #F4AF35;
+  --mxw-card-bg: rgba(255, 255, 255, 0.82);
+  --mxw-card-border: rgba(9, 29, 13, 0.08);
+  --mxw-shadow: 0 4px 18px -4px rgba(9, 29, 13, 0.06);
+  --mxw-shadow-active: 0 12px 32px -8px rgba(9, 29, 13, 0.12), 0 0 0 1.5px var(--mxw-gold);
+  --mxw-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mx-why {
+  position: relative;
+  background-color: var(--mxw-bg);
+  color: var(--mxw-ink);
+  padding-block: clamp(5rem, 7vw, 7rem); /* Compact py-20 lg:py-28 */
+  overflow: clip;
+}
+
+/* Subtle ambient backdrop lighting */
+.mx-why::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 85% 30%, rgba(157, 203, 91, 0.10) 0%, transparent 55%),
+    radial-gradient(circle at 15% 75%, rgba(244, 175, 53, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Balanced max-w-7xl container */
+.mx-why__container {
+  position: relative;
+  width: 100%;
+  max-width: 80rem; /* max-w-7xl */
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+/* 2-Column Grid: Left 7 Cols, Right 5 Cols */
+.mx-why__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .mx-why__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 3rem; /* gap-12 */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Left Column: Header & Value Pillars (7 Cols)
+   -------------------------------------------------------------------------- */
+.mx-why__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .mx-why__content {
+    grid-column: span 7 / span 7;
+  }
+}
+
+.mx-why__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Eyebrow */
+.mx-why .mx-eyebrow {
+  display: inline-block;
+  font-family: var(--mx-font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mxw-sub);
+  margin: 0;
+}
+
+.mx-why .mx-eyebrow::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background: var(--mxw-gold);
+}
+
+/* Heading H2 */
+.mx-why__heading {
+  font-family: var(--mx-font-display);
+  font-size: clamp(2.2rem, 1.8rem + 2vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--mxw-ink);
+  margin: 0;
+}
+
+/* Value Pillars List (.mx-values) */
+.mx-values {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Individual Pillar Card */
+.mx-value {
+  position: relative;
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background-color: var(--mxw-card-bg);
+  border: 1px solid var(--mxw-card-border);
+  box-shadow: var(--mxw-shadow);
+  cursor: pointer;
+  transition: transform 0.3s var(--mxw-ease), 
+              background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s var(--mxw-ease);
+  outline: none;
+}
+
+.mx-value:hover,
+.mx-value:focus-visible {
+  transform: translateY(-2px);
+  background-color: #FFFFFF;
+  border-color: rgba(9, 29, 13, 0.16);
+  box-shadow: 0 10px 24px -6px rgba(9, 29, 13, 0.10);
+}
+
+.mx-value.is-active {
+  background-color: #FFFFFF;
+  border-color: var(--mxw-gold);
+  box-shadow: var(--mxw-shadow-active);
+  transform: translateY(-2px);
+}
+
+/* Active indicator accent */
+.mx-value::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 0;
+  width: 3.5px;
+  border-radius: 0 3px 3px 0;
+  background: var(--mxw-gold);
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition: opacity 0.25s ease, transform 0.25s var(--mxw-ease);
+}
+
+.mx-value.is-active::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* Pillar Number Badge */
+.mx-value__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(9, 29, 13, 0.05);
+  border: 1px solid rgba(9, 29, 13, 0.08);
+  font-family: var(--mx-font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--mxw-ink);
+  letter-spacing: 0.04em;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s var(--mxw-ease);
+}
+
+.mx-value:hover .mx-value__num,
+.mx-value:focus-visible .mx-value__num {
+  background: rgba(244, 175, 53, 0.15);
+  border-color: rgba(244, 175, 53, 0.4);
+  color: #B4780E;
+}
+
+.mx-value.is-active .mx-value__num {
+  background: var(--mxw-gold);
+  border-color: var(--mxw-gold);
+  color: #091D0D;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(244, 175, 53, 0.35);
+}
+
+/* Pillar Body */
+.mx-value__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mx-value__title {
+  margin: 0;
+  font-family: var(--mx-font-display);
+  font-size: clamp(1.15rem, 1.05rem + 0.3vw, 1.35rem);
+  font-weight: 700;
+  color: var(--mxw-ink);
+  line-height: 1.2;
+}
+
+.mx-value__desc {
+  margin: 0;
+  font-family: var(--mx-font-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--mxw-body);
+}
+
+.mx-why__link {
+  color: var(--mxw-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--mxw-gold);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.mx-why__link:hover {
+  color: #B4780E;
+  text-decoration-color: var(--mxw-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Visual Stack (5 Cols)
+   -------------------------------------------------------------------------- */
+.mx-why__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .mx-why__visual {
+    grid-column: span 5 / span 5;
+  }
+}
+
+.mx-why__visual-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1 / 1;
+}
+
+/* Ambient Radial Glow & Orbit behind the logo */
+.mx-why__aura {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(157, 203, 91, 0.16) 0%, rgba(244, 175, 53, 0.12) 50%, transparent 75%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.mx-why__orbit-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Strict square container: aspect-ratio: 1 / 1; max-width: 420px; margin: 0 auto; */
+.mx-logo-stack {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  animation: mxLogoFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Gentle floating breathing effect on the whole unified mark */
+@keyframes mxLogoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* EVERY layer has position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; */
+.mx-logo-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+}
+
+/* Crisp base image (always visible, keeps logo unified & intact) */
+.mx-logo-layer--base {
+  opacity: 1;
+  filter: drop-shadow(0 12px 28px rgba(9, 29, 13, 0.09));
+  z-index: 1;
+}
+
+/* Overlay segment layers (pre-aligned full-canvas layers) */
+.mx-logo-seg {
+  z-index: 2;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.4s var(--mxw-ease), 
+              transform 0.4s var(--mxw-ease), 
+              filter 0.4s var(--mxw-ease);
+}
+
+/* --------------------------------------------------------------------------
+   Hover / Active Pillar Highlight & Glow on Corresponding Segments
+   (Subtle scale(1.03), glowing drop-shadow, keeping logo 100% intact!)
+   -------------------------------------------------------------------------- */
+
+/* Pillar 01: Integrity -> Highlights Seg 1 (Top Dark) & Seg 3 (Left Dark) */
+.mx-logo-stack.is-pillar-1 .mx-logo-seg--1,
+.mx-logo-stack.is-pillar-1 .mx-logo-seg--3 {
+  opacity: 1;
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 14px rgba(9, 29, 13, 0.4)) brightness(1.1);
+}
+
+/* Pillar 02: Technology Edge -> Highlights Seg 2 (Top Right Lime), Seg 4 (Right Green) & Center Drop (Gold) */
+.mx-logo-stack.is-pillar-2 .mx-logo-seg--2,
+.mx-logo-stack.is-pillar-2 .mx-logo-seg--4 {
+  opacity: 1;
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 18px rgba(157, 203, 91, 0.65)) brightness(1.15);
+}
+
+.mx-logo-stack.is-pillar-2 .mx-logo-drop {
+  opacity: 1;
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 20px rgba(244, 175, 53, 0.85)) brightness(1.2);
+}
+
+/* Pillar 03: Diversity & Agility -> Highlights Seg 5 (Bottom Left) & Seg 6 (Bottom Right) */
+.mx-logo-stack.is-pillar-3 .mx-logo-seg--5,
+.mx-logo-stack.is-pillar-3 .mx-logo-seg--6 {
+  opacity: 1;
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 18px rgba(244, 175, 53, 0.55)) brightness(1.15);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .mx-logo-stack {
+    animation: none !important;
+  }
+  .mx-value,
+  .mx-logo-seg {
+    transition: none !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,455 @@
+/* ==========================================================================
+   Section 3: Our Products (.mx-products, Theme: Dark #091D0D)
+   ========================================================================== */
+
+:root {
+  --mxp-bg: #091D0D;
+  --mxp-bg-2: #0F2A17;
+  --mxp-text: #EFF5ED;
+  --mxp-sub: #AAB6AC;
+  --mxp-green: #9DCB5B;
+  --mxp-gold: #F4AF35;
+  --mxp-line: rgba(239, 245, 237, 0.12);
+  --mxp-glow: rgba(244, 175, 53, 0.20);
+  --mxp-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mx-products {
+  position: relative;
+  background-color: var(--mxp-bg);
+  background-image:
+    radial-gradient(55% 60% at 75% 45%, var(--mxp-bg-2) 0%, transparent 72%),
+    linear-gradient(180deg, rgba(9, 29, 13, 0.4) 0%, var(--mxp-bg) 100%);
+  color: var(--mxp-text);
+  padding-block: clamp(5rem, 10vw, 8.5rem);
+  overflow: clip;
+}
+
+.mx-products__container {
+  width: 100%;
+  max-width: calc(var(--mx-container) + 2 * var(--mx-gutter));
+  margin-inline: auto;
+  padding-inline: var(--mx-gutter);
+}
+
+.mx-products__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1025px) {
+  .mx-products__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-areas:
+      "intro stage"
+      "list  stage";
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(3rem, 6vw, 7rem);
+    row-gap: 2rem;
+    align-items: start;
+  }
+  .mx-products__intro {
+    grid-area: intro;
+  }
+  .mx-products__stage-col {
+    grid-area: stage;
+    align-self: center;
+  }
+  .mx-products__list {
+    grid-area: list;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Intro Header (.mx-products__intro)
+   -------------------------------------------------------------------------- */
+.mx-products__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Eyebrow */
+.mx-products .mx-eyebrow {
+  display: inline-block;
+  font-family: var(--mx-font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mxp-sub);
+  margin: 0;
+}
+
+.mx-products .mx-eyebrow::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: var(--mxp-gold);
+}
+
+/* Heading (H2) */
+.mx-products .mx-title h2 {
+  font-family: var(--mx-font-display);
+  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--mxp-text);
+  max-width: 17ch;
+  margin: 0;
+}
+
+/* Lead text */
+.mx-products .mx-lead {
+  font-family: var(--mx-font-body);
+  font-size: var(--mx-text-lg);
+  line-height: var(--mx-leading-body);
+  color: var(--mxp-sub);
+  max-width: 48ch;
+  margin: 0;
+}
+
+/* Specification Line (.mx-specline) */
+.mx-specline {
+  font-family: var(--mx-font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--mxp-sub);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Catalog Link Arrow */
+.mx-products__catalog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mx-font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--mxp-gold);
+  text-decoration: none;
+  margin-top: 0.25rem;
+  transition: color 0.25s ease, transform 0.25s var(--mxp-ease);
+}
+
+.mx-products__catalog-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s var(--mxp-ease);
+}
+
+.mx-products__catalog-link:hover {
+  color: #FFF;
+  transform: translateX(3px);
+}
+
+.mx-products__catalog-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   Visual Stage (.mxp-stage)
+   -------------------------------------------------------------------------- */
+.mx-products__stage-col {
+  position: relative;
+  width: 100%;
+}
+
+.mxp-stage {
+  position: relative;
+  width: min(100%, 640px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  perspective: 1400px;
+}
+
+.mxp-glow {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 46%, var(--mxp-glow) 0%, rgba(157, 203, 91, 0.08) 42%, transparent 68%);
+  transition: background 0.7s var(--mxp-ease);
+  pointer-events: none;
+}
+
+.mxp-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Individual Picture Layers */
+.mxp-layer,
+.mxp-sweep {
+  position: absolute;
+  left: var(--l);
+  top: var(--t);
+  width: var(--w);
+  height: var(--h);
+}
+
+.mxp-layer {
+  display: block;
+  transition: filter 0.5s var(--mxp-ease), transform 0.5s var(--mxp-ease), opacity 0.5s var(--mxp-ease);
+  cursor: pointer;
+}
+
+.mxp-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Realistic Grounding Shadow on Vessels */
+.mxp-layer--barrel img,
+.mxp-layer--cylinder img,
+.mxp-layer--beaker img {
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.45));
+}
+
+/* Golden Sweep Effect using vessel mask URL */
+.mxp-sweep {
+  display: none;
+  pointer-events: none;
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 240, 200, 0.95) 50%, transparent 65%) no-repeat;
+  background-size: 260% 100%;
+  background-position: 100% 0;
+  mix-blend-mode: screen;
+  opacity: 0;
+  z-index: 10;
+}
+
+@keyframes mxSweepAnim {
+  0% {
+    background-position: 100% 0;
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.95;
+  }
+  75% {
+    opacity: 0.95;
+  }
+  100% {
+    background-position: 0% 0;
+    opacity: 0;
+  }
+}
+
+/* Stage Lighting & Spotlight Focus Sync */
+.mxp-stage[data-active="cylinder"] .mxp-layer--cylinder {
+  transform: scale(1.04) translateY(-4px);
+  filter: drop-shadow(0 22px 28px rgba(244, 175, 53, 0.35));
+  z-index: 8;
+}
+
+.mxp-stage[data-active="cylinder"] .mxp-sweep--cylinder {
+  display: block;
+  animation: mxSweepAnim 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mxp-stage[data-active="cylinder"] .mxp-layer:not(.mxp-layer--cylinder):not(.mxp-layer--bg) {
+  filter: brightness(0.38) saturate(0.5);
+  opacity: 0.65;
+}
+
+.mxp-stage[data-active="beaker"] .mxp-layer--beaker {
+  transform: scale(1.05) translateY(-4px);
+  filter: drop-shadow(0 20px 26px rgba(233, 230, 198, 0.35));
+  z-index: 8;
+}
+
+.mxp-stage[data-active="beaker"] .mxp-sweep--beaker {
+  display: block;
+  animation: mxSweepAnim 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mxp-stage[data-active="beaker"] .mxp-layer:not(.mxp-layer--beaker):not(.mxp-layer--bg) {
+  filter: brightness(0.38) saturate(0.5);
+  opacity: 0.65;
+}
+
+.mxp-stage[data-active="barrel"] .mxp-layer--barrel {
+  transform: scale(1.03) translateY(-4px);
+  filter: drop-shadow(0 24px 30px rgba(157, 203, 91, 0.35));
+  z-index: 8;
+}
+
+.mxp-stage[data-active="barrel"] .mxp-sweep--barrel {
+  display: block;
+  animation: mxSweepAnim 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mxp-stage[data-active="barrel"] .mxp-layer:not(.mxp-layer--barrel):not(.mxp-layer--bg) {
+  filter: brightness(0.38) saturate(0.5);
+  opacity: 0.65;
+}
+
+/* Background layer soft dim when any product is active */
+.mxp-stage[data-active="cylinder"] .mxp-layer--bg,
+.mxp-stage[data-active="beaker"] .mxp-layer--bg,
+.mxp-stage[data-active="barrel"] .mxp-layer--bg {
+  filter: brightness(0.65) saturate(0.8);
+}
+
+/* --------------------------------------------------------------------------
+   Product Items List (.mx-products__list)
+   -------------------------------------------------------------------------- */
+.mx-products__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--mxp-line);
+  margin-top: 1.5rem;
+}
+
+.mx-product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.35rem 0 1.35rem 1.4rem;
+  border-bottom: 1px solid var(--mxp-line);
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.mx-product::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.35rem;
+  bottom: 1.35rem;
+  width: 2.5px;
+  border-radius: 2px;
+  background: var(--mxp-gold);
+  opacity: 0;
+  transform: scaleY(0.3);
+  transform-origin: top center;
+  transition: opacity 0.4s var(--mxp-ease), transform 0.4s var(--mxp-ease);
+}
+
+.mx-product:hover::before,
+.mx-product.is-active::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.mx-product:hover,
+.mx-product.is-active {
+  background: rgba(239, 245, 237, 0.02);
+}
+
+/* Product Card Title + Liquid Chip */
+.mx-product__title h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--mx-font-display);
+  font-size: clamp(1.2rem, 1.05rem + 0.45vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--mxp-text);
+  margin: 0;
+  transition: color 0.3s var(--mxp-ease);
+}
+
+.mx-product:hover .mx-product__title h3,
+.mx-product.is-active .mx-product__title h3 {
+  color: #FFF;
+}
+
+.mx-product__chip {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(239, 245, 237, 0.08);
+}
+
+.mx-product--cylinder .mx-product__chip {
+  background-color: var(--mxp-gold);
+}
+
+.mx-product--beaker .mx-product__chip {
+  background-color: #E9E6C6;
+}
+
+.mx-product--barrel .mx-product__chip {
+  background-color: #B9C2BC;
+}
+
+/* Description */
+.mx-product__text p {
+  font-family: var(--mx-font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mxp-sub);
+  max-width: 46ch;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.mx-product:hover .mx-product__text p,
+.mx-product.is-active .mx-product__text p {
+  color: rgba(239, 245, 237, 0.88);
+}
+
+/* Link Button */
+.mx-product__link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mx-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--mxp-gold);
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s var(--mxp-ease);
+}
+
+.mx-product__link a svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s var(--mxp-ease);
+}
+
+.mx-product:hover .mx-product__link a,
+.mx-product.is-active .mx-product__link a {
+  color: #FFF;
+}
+
+.mx-product:hover .mx-product__link a svg,
+.mx-product.is-active .mx-product__link a svg {
+  transform: translateX(3px);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mxp-layer,
+  .mxp-glow,
+  .mx-product::before,
+  .mxp-sweep {
+    transition: none !important;
+    animation: none !important;
+  }
+}

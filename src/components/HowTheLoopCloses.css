@@ -1,0 +1,389 @@
+/* ==========================================================================
+   Section 2: How The Loop Closes (.mx-loop, Theme: Light #EFF5ED)
+   ========================================================================== */
+
+:root {
+  --mxl-bg: #EFF5ED;
+  --mxl-ink: #091D0D;
+  --mxl-sub: #839085;
+  --mxl-body: #5B6B5F;
+  --mxl-card: #9DCB5B;
+  --mxl-card-ink: #091D0D;
+  --mxl-gold: #F4AF35;
+  --mxl-card-dim: #C2DE98;
+  --mxl-line: rgba(9, 29, 13, 0.12);
+  --mxl-track: rgba(9, 29, 13, 0.10);
+  --mxl-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset, 0 18px 40px -26px rgba(9, 29, 13, 0.45);
+  --mxl-shadow-up: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 34px 60px -30px rgba(9, 29, 13, 0.55);
+  --mxl-rail-x: 36px;
+  --mxl-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mx-loop {
+  position: relative;
+  background-color: var(--mxl-bg);
+  color: var(--mxl-ink);
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  overflow: clip;
+}
+
+.mx-loop__container {
+  width: 100%;
+  max-width: calc(var(--mx-container) + 2 * var(--mx-gutter));
+  margin-inline: auto;
+  padding-inline: var(--mx-gutter);
+}
+
+.mx-loop__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 1025px) {
+  .mx-loop__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: clamp(3rem, 6vw, 7rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Left Column: Intro (.mx-loop__intro)
+   -------------------------------------------------------------------------- */
+.mx-loop__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1025px) {
+  .mx-loop__intro {
+    position: sticky;
+    top: clamp(5.5rem, 14vh, 9rem);
+    align-self: start;
+  }
+}
+
+/* Eyebrow with gold underline */
+.mx-loop .mx-eyebrow {
+  display: inline-block;
+  font-family: var(--mx-font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mxl-sub);
+  margin: 0;
+}
+
+.mx-loop .mx-eyebrow::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: var(--mxl-gold);
+  transform: scaleX(var(--mxl-eyebrow, 1));
+  transform-origin: left center;
+  transition: transform 0.6s var(--mxl-ease);
+}
+
+/* Main Heading (H2) */
+.mx-loop .mx-title h2 {
+  font-family: var(--mx-font-display);
+  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--mxl-ink);
+  max-width: 16ch;
+  margin: 0;
+}
+
+/* Lead text */
+.mx-loop .mx-lead {
+  font-family: var(--mx-font-body);
+  font-size: var(--mx-text-lg);
+  line-height: var(--mx-leading-body);
+  color: var(--mxl-body);
+  max-width: 48ch;
+  margin: 0;
+}
+
+/* Checklist (.mx-checklist) */
+.mx-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mx-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mx-checklist__icon {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--mxl-gold);
+  transition: transform 0.3s var(--mxl-ease), background-color 0.3s var(--mxl-ease);
+}
+
+.mx-checklist__item:hover .mx-checklist__icon {
+  transform: scale(1.1);
+  background-color: rgba(244, 175, 53, 0.12);
+}
+
+.mx-checklist__icon svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--mxl-ink);
+}
+
+.mx-checklist__text {
+  font-family: var(--mx-font-body);
+  font-size: 0.975rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--mxl-ink);
+}
+
+/* Scope Box (.mx-scope) */
+.mx-scope {
+  position: relative;
+  margin-top: 0.5rem;
+  padding: 1.35rem 1.5rem 1.35rem 1.75rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--mxl-card) 20%, var(--mxl-bg));
+  border: 1px solid rgba(157, 203, 91, 0.35);
+  box-shadow: 0 4px 16px -8px rgba(9, 29, 13, 0.08);
+}
+
+.mx-scope::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 3.5px;
+  height: calc(100% - 28px);
+  border-radius: 3px;
+  background: var(--mxl-gold);
+  transform: scaleY(var(--mxl-scope, 1));
+  transform-origin: top center;
+  transition: transform 0.7s var(--mxl-ease);
+}
+
+.mx-scope__title h3 {
+  font-family: var(--mx-font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--mxl-ink);
+  margin: 0 0 0.35rem 0;
+}
+
+.mx-scope__text p {
+  font-family: var(--mx-font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--mxl-body);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Steps (.mx-loop__steps)
+   -------------------------------------------------------------------------- */
+.mx-loop__steps {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  isolation: isolate;
+}
+
+@media (min-width: 1025px) {
+  .mx-loop__steps {
+    gap: clamp(2.5rem, 8vh, 4.5rem);
+    padding-block: 2vh 8vh;
+  }
+}
+
+/* Static and dynamic connecting rail */
+.mx-loop__steps::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: var(--mxl-rail-x);
+  width: 1.5px;
+  margin-left: -0.75px;
+  background: var(--mxl-track);
+  z-index: -1;
+}
+
+.mxl-rail {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: var(--mxl-rail-x);
+  width: 2px;
+  margin-left: -1px;
+  overflow: visible;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.mxl-rail line {
+  stroke: var(--mxl-gold);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+/* Step Card (.mx-step) */
+.mx-step {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  grid-template-areas:
+    "icon title"
+    "num  text";
+  column-gap: 0.75rem;
+  row-gap: 0.6rem;
+  align-items: start;
+  padding: 1.75rem 1.75rem 1.75rem 0;
+  border-radius: 20px;
+  background-color: var(--mxl-card);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 45%);
+  color: var(--mxl-card-ink);
+  box-shadow: var(--mxl-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: transform 0.45s var(--mxl-ease), box-shadow 0.45s var(--mxl-ease), background-color 0.45s var(--mxl-ease);
+  will-change: transform, box-shadow;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --mxl-rail-x: 30px;
+  }
+  .mx-step {
+    grid-template-columns: 60px minmax(0, 1fr);
+    padding: 1.4rem 1.25rem 1.4rem 0;
+    column-gap: 0.5rem;
+  }
+}
+
+.mx-step:hover,
+.mx-step.is-current {
+  transform: translateY(-6px);
+  background-color: var(--mxl-card);
+  box-shadow: var(--mxl-shadow-up);
+}
+
+.mx-step > .mx-step__icon {
+  grid-area: icon;
+  justify-self: center;
+}
+
+.mx-step > .mx-step__num {
+  grid-area: num;
+  justify-self: center;
+}
+
+.mx-step > .mx-step__title {
+  grid-area: title;
+  align-self: center;
+}
+
+.mx-step > .mx-step__text {
+  grid-area: text;
+}
+
+/* Icon Container */
+.mx-step__icon-wrapper {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(9, 29, 13, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(9, 29, 13, 0.08);
+  transition: transform 0.35s var(--mxl-ease), background-color 0.35s var(--mxl-ease);
+}
+
+.mx-step:hover .mx-step__icon-wrapper,
+.mx-step.is-current .mx-step__icon-wrapper {
+  transform: scale(1.08);
+  background: rgba(9, 29, 13, 0.12);
+}
+
+.mx-step__icon-wrapper svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--mxl-card-ink);
+}
+
+/* Number Circle (centered on the rail) */
+.mx-step__num-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--mxl-card);
+  box-shadow: inset 0 0 0 1.5px rgba(9, 29, 13, 0.35);
+  font-family: var(--mx-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--mxl-card-ink);
+  transition: background-color 0.4s var(--mxl-ease), box-shadow 0.4s var(--mxl-ease), transform 0.4s var(--mxl-ease);
+}
+
+.mx-step:hover .mx-step__num-badge,
+.mx-step.is-reached .mx-step__num-badge,
+.mx-step.is-current .mx-step__num-badge {
+  background: var(--mxl-gold);
+  box-shadow: inset 0 0 0 1.5px var(--mxl-gold), 0 0 0 5px rgba(244, 175, 53, 0.22);
+  transform: scale(1.06);
+}
+
+/* Title & Description */
+.mx-step__title h3 {
+  font-family: var(--mx-font-display);
+  font-size: clamp(1.35rem, 1.2rem + 0.4vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--mxl-card-ink);
+  margin: 0;
+}
+
+.mx-step__text p {
+  font-family: var(--mx-font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mxl-card-ink);
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mx-step,
+  .mx-step__num-badge,
+  .mx-checklist__icon {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,860 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   1. FONTS SPECIFICATION (@font-face)
+   ========================================================================== */
+@font-face {
+  font-family: "Masader Display";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-display.woff2") format("woff2-variations"),
+       url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-display.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Masader Display";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-display-italic.woff2") format("woff2-variations"),
+       url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-display-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Masader Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-sans.woff2") format("woff2-variations"),
+       url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-sans.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Masader Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-mono.woff2") format("woff2-variations"),
+       url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-mono.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Masader Arabic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-arabic.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+
+/* ==========================================================================
+   2. CORE DESIGN TOKENS (Section 2 of CONTENT_SPEC.md)
+   ========================================================================== */
+:root {
+  /* Brand palette */
+  --mx-ink: #091D0D;
+  --mx-mist: #EFF5ED;
+  --mx-sage: #839085;
+  --mx-leaf: #9DCB5B;
+  --mx-gold: #F4AF35;
+  --mx-gradient-loop: linear-gradient(90deg, #F4AF35 0%, #C9C05A 45%, #9DCB5B 100%);
+
+  /* Derived shades */
+  --mx-ink-900: #0B2310;
+  --mx-ink-800: #10301A;
+  --mx-ink-700: #18402A;
+  --mx-mist-50: #F7FAF6;
+  --mx-mist-200: #DFE9DB;
+  --mx-leaf-600: #7FAF3E;
+  --mx-leaf-200: #D6EABA;
+  --mx-gold-600: #D9921A;
+  --mx-gold-200: #FBE0AE;
+  --mx-paper: #FBFCF9;
+
+  --mx-line-dark: rgba(239, 245, 237, 0.10);
+  --mx-line-light: rgba(9, 29, 13, 0.10);
+  --mx-text-on-dark: rgba(239, 245, 237, 0.72);
+
+  --mxp-bg: var(--mx-ink);
+  --mxp-text: var(--mx-mist);
+  --mxp-gold: var(--mx-gold);
+  --mxp-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Typography */
+  --mx-font-display: "Masader Display", "Newsreader", Georgia, "Times New Roman", serif;
+  --mx-font-body: "Masader Sans", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mx-font-mono: "Masader Mono", "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --mx-font-arabic: "Masader Arabic", "Amiri", "Noto Naskh Arabic", serif;
+
+  --mx-text-xs: 0.75rem;
+  --mx-text-sm: 0.875rem;
+  --mx-text-base: 1rem;
+  --mx-text-lg: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem);
+  --mx-text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  --mx-text-2xl: clamp(1.875rem, 1.5rem + 1.6vw, 2.875rem);
+  --mx-text-3xl: clamp(2.5rem, 1.8rem + 3vw, 4.25rem);
+  --mx-text-4xl: clamp(3.1rem, 2rem + 4.6vw, 5.75rem);
+
+  --mx-leading-tight: 1.06;
+  --mx-leading-snug: 1.25;
+  --mx-leading-body: 1.65;
+  --mx-tracking-eyebrow: 0.18em;
+
+  /* Layout & Dimensions */
+  --mx-container: 1280px;
+  --mx-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --mx-header-h: 84px;
+  --mx-brand-h: 48px;
+
+  /* Motion */
+  --mx-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --mx-ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --mx-dur-fast: 180ms;
+  --mx-dur: 420ms;
+  --mx-dur-slow: 900ms;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --mx-header-h: 72px;
+    --mx-brand-h: 40px;
+  }
+}
+
+/* ==========================================================================
+   3. GLOBAL RESET & BASE RULES
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--mx-ink);
+  color: var(--mx-mist);
+}
+
+body {
+  margin: 0;
+  font-family: var(--mx-font-body);
+  font-size: var(--mx-text-base);
+  line-height: var(--mx-leading-body);
+  background-color: var(--mx-ink);
+  color: var(--mx-mist);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Accessibility Skip Link (Section 1 of spec) */
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mx-skip-link:focus {
+  position: fixed !important;
+  top: 12px;
+  left: 12px;
+  z-index: 100000;
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  clip: auto;
+  background: var(--mx-ink);
+  color: var(--mx-mist);
+  border: 1px solid var(--mx-gold);
+  border-radius: 6px;
+  font-family: var(--mx-font-body);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.mx-main {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Gradient Loop Text */
+.mx-gradient-text {
+  color: var(--mx-gold);
+  -webkit-text-fill-color: var(--mx-gold);
+}
+
+.mx-gradient-text.is-sheen {
+  background-image: linear-gradient(105deg, #F4AF35 38%, #FFF3D2 50%, #F4AF35 62%);
+  background-size: 260% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ==========================================================================
+   4. SITE HEADER (Section 3 of spec: .mx-site-header)
+   ========================================================================== */
+.mx-site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding-block: 18px;
+  background-color: transparent;
+  transition: transform 0.45s var(--mxp-ease), background-color 0.35s ease, padding 0.35s var(--mxp-ease), box-shadow 0.35s ease;
+}
+
+.mx-site-header.is-scrolled {
+  padding-block: 10px;
+  background-color: rgba(9, 29, 13, 0.88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(239, 245, 237, 0.08);
+}
+
+.mx-site-header.is-hidden {
+  transform: translateY(-110%);
+}
+
+.mx-site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  max-width: calc(var(--mx-container) + 2 * var(--mx-gutter));
+  margin-inline: auto;
+  padding-inline: var(--mx-gutter);
+}
+
+/* Brand Link */
+.mx-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--mx-brand-h) * 0.22);
+  height: var(--mx-brand-h);
+  line-height: 0;
+  flex: none;
+  text-decoration: none;
+  transform-origin: left center;
+  transition: transform 0.35s var(--mxp-ease), opacity 0.6s ease;
+}
+
+.is-scrolled .mx-brand {
+  transform: scale(0.88);
+}
+
+.mx-brand__icon {
+  position: relative;
+  display: block;
+  height: var(--mx-brand-h);
+  aspect-ratio: 744 / 858;
+  flex: none;
+}
+
+.mx-brand__icon img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+}
+
+.mx-brand__word {
+  display: block;
+  height: var(--mx-brand-h);
+  width: auto;
+  aspect-ratio: 1518 / 858;
+  max-width: none;
+  flex: none;
+}
+
+/* Animated Segments & Sheen */
+.mx-brand__sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 240, 200, 0.9) 50%, transparent 62%) no-repeat;
+  background-size: 260% 100%;
+  background-position: calc(100% - var(--sheen, 0) * 100%) 0;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+/* Primary Desktop Navigation */
+.mx-nav {
+  margin-left: auto;
+}
+
+.mx-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.1rem, 2vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mx-nav__list li {
+  position: relative;
+}
+
+.mx-nav__list a {
+  position: relative;
+  display: inline-block;
+  padding: 6px 0;
+  font-family: var(--mx-font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(239, 245, 237, 0.86);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.mx-nav__list a:hover {
+  color: var(--mx-mist);
+}
+
+.mx-nav__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background: var(--mx-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s var(--mxp-ease);
+  pointer-events: none;
+}
+
+.mx-nav__list li:hover .mx-nav__line {
+  transform: scaleX(1);
+}
+
+/* Header CTA Button */
+.mx-header-cta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 20px;
+  border-radius: 6px;
+  background: var(--mx-gold);
+  color: var(--mx-ink);
+  font-family: var(--mx-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 22px -10px rgba(244, 175, 53, 0.6);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s var(--mxp-ease);
+  will-change: transform;
+}
+
+.mx-header-cta:hover {
+  background: #F7BF55;
+  color: var(--mx-ink);
+  box-shadow: 0 12px 28px -10px rgba(244, 175, 53, 0.7);
+  transform: translateY(-1px);
+}
+
+.mx-header-cta:active {
+  transform: translateY(0);
+}
+
+/* Mobile Hamburger Button */
+.mx-burger {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid rgba(239, 245, 237, 0.18);
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mx-burger__bar {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
+  background: var(--mx-mist);
+  transition: transform 0.35s var(--mxp-ease), top 0.35s var(--mxp-ease);
+}
+
+.mx-burger__bar:nth-child(1) {
+  top: 17px;
+}
+
+.mx-burger__bar:nth-child(2) {
+  top: 25px;
+}
+
+.mx-burger[aria-expanded="true"] .mx-burger__bar:nth-child(1) {
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.mx-burger[aria-expanded="true"] .mx-burger__bar:nth-child(2) {
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 1024px) {
+  .mx-nav,
+  .mx-site-header__inner > .mx-header-cta {
+    display: none;
+  }
+  .mx-burger {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   5. MOBILE MENU OVERLAY (Section 4 of spec: .mx-menu-overlay)
+   ========================================================================== */
+.mx-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: calc(var(--mx-header-h) + 2rem) var(--mx-gutter) 3rem;
+  background: var(--mx-ink);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  overscroll-behavior: contain;
+}
+
+.mx-menu-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mx-menu-overlay__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.mx-menu-overlay__list a {
+  display: block;
+  padding: 0.45rem 0;
+  font-family: var(--mx-font-display);
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--mx-mist);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.mx-menu-overlay__list a:hover {
+  color: var(--mx-gold);
+}
+
+.mx-header-cta--overlay {
+  align-self: flex-start;
+  padding: 14px 24px;
+  font-size: 1rem;
+}
+
+@media (min-width: 1025px) {
+  .mx-menu-overlay {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   6. HERO SECTION (Section 5.1 of spec: .mx-hero)
+   ========================================================================== */
+.mx-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--mx-header-h) + 2rem);
+  padding-bottom: 5rem;
+  background:
+    radial-gradient(140% 125% at 86% -24%, rgba(24, 64, 42, 0.92) 0%, rgba(24, 64, 42, 0.34) 44%, transparent 70%),
+    linear-gradient(196deg, rgba(157, 203, 91, 0.05) 0%, rgba(9, 29, 13, 0) 48%),
+    var(--mx-ink);
+  overflow: clip;
+}
+
+.mx-hero__container {
+  width: 100%;
+  max-width: calc(var(--mx-container) + 2 * var(--mx-gutter));
+  margin-inline: auto;
+  padding-inline: var(--mx-gutter);
+}
+
+.mx-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+@media (min-width: 1025px) {
+  .mx-hero__grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 4rem;
+  }
+}
+
+/* Text Column */
+.mx-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+.mx-hero__eyebrow-row {
+  display: flex;
+  align-items: center;
+}
+
+.mx-hero__kicker {
+  font-family: var(--mx-font-body);
+  font-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+  color: var(--mx-text-on-dark);
+  margin: 0;
+}
+
+.mx-hero__sep {
+  font-weight: 600;
+  color: var(--mx-gold);
+  padding-inline: 0.25rem;
+}
+
+.mx-hero__title h1 {
+  font-family: var(--mx-font-display);
+  font-size: var(--mx-text-4xl);
+  font-weight: 700;
+  line-height: var(--mx-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--mx-mist);
+  margin: 0;
+}
+
+.mx-lead {
+  font-family: var(--mx-font-body);
+  font-size: var(--mx-text-lg);
+  line-height: var(--mx-leading-body);
+  color: var(--mx-text-on-dark);
+  max-width: 58ch;
+  margin: 0;
+}
+
+.mx-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.mx-actions .mx-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 8px;
+  background: var(--mx-gold);
+  color: var(--mx-ink);
+  font-family: var(--mx-font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 28px -10px rgba(244, 175, 53, 0.6);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s var(--mxp-ease);
+}
+
+.mx-actions .mx-btn-primary:hover {
+  background: #F7BF55;
+  box-shadow: 0 14px 34px -10px rgba(244, 175, 53, 0.75);
+  transform: translateY(-2px);
+}
+
+.mx-actions .mx-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(239, 245, 237, 0.2);
+  background: rgba(239, 245, 237, 0.04);
+  color: var(--mx-mist);
+  font-family: var(--mx-font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s var(--mxp-ease);
+}
+
+.mx-actions .mx-btn-ghost:hover {
+  background: rgba(239, 245, 237, 0.1);
+  border-color: rgba(239, 245, 237, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Metrics Bar */
+.mx-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--mx-line-dark);
+  margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .mx-metrics {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.mx-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.mx-metric__value {
+  font-family: var(--mx-font-display);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--mx-mist);
+}
+
+.mx-metric__label {
+  font-family: var(--mx-font-body);
+  font-size: var(--mx-text-xs);
+  line-height: 1.4;
+  color: var(--mx-sage);
+  margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   7. HERO VISUAL COMPONENT (.mx-hero__visual / .mx-visual--orbit)
+   ========================================================================== */
+.mx-hero__visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.mx-visual--orbit {
+  position: relative;
+  width: min(100%, 74svh, 600px);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ambient 6 Hexagon Segments (744w) Background Art */
+.mx-hero-hex {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: calc(var(--mx-container) / 2 - 50vw - 12vw);
+  translate: 0 -50%;
+  width: min(52vw, 760px);
+  aspect-ratio: 744 / 858;
+  opacity: 0.06;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  animation: mxHexOrbit 120s linear infinite;
+}
+
+@keyframes mxHexOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mx-hero-hex__seg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* Center Logo Group (Mark + Arabic + English Wordmarks) */
+.mx-hero-logo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+@media (min-width: 1025px) {
+  .mx-hero-logo {
+    translate: 0 -35px;
+  }
+}
+
+.mx-hero-mark {
+  position: relative;
+  height: clamp(160px, 24svh, 220px);
+  aspect-ratio: 744 / 858;
+  flex: none;
+}
+
+.mx-hero-mark > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+}
+
+.mx-hero-fall {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 1.5px;
+  height: 180px;
+  margin-left: -0.75px;
+  background: linear-gradient(to bottom, rgba(244, 175, 53, 0), rgba(244, 175, 53, 0.75));
+  transform-origin: top center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mx-hero-ripples {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.mx-hero-ripple {
+  grid-area: 1 / 1;
+  width: 70%;
+  aspect-ratio: 1;
+  border: 1.5px solid rgba(244, 175, 53, 0.7);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Words */
+.mx-hero-words {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  width: min(340px, 80%);
+}
+
+.mx-hero-word {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.mx-hero-word--ar {
+  max-height: 52px;
+}
+
+.mx-hero-word--en {
+  max-height: 22px;
+}
+
+/* Breathing animation for idle hero */
+@keyframes mxBreathe {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.015);
+  }
+}
+
+.mx-visual--orbit.is-assembled .mx-hero-mark {
+  animation: mxBreathe 6s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+  .mx-hero-hex {
+    top: -4%;
+    right: -25%;
+    translate: none;
+    width: 95vw;
+    opacity: 0.05;
+  }
+  .mx-visual--orbit {
+    width: min(86vw, 380px);
+  }
+}
+
+/* ==========================================================================
+   8. ACCESSIBILITY / PREFERS-REDUCED-MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .mx-hero-hex {
+    animation: none !important;
+  }
+  .mx-visual--orbit.is-assembled .mx-hero-mark {
+    animation: none !important;
+  }
+}

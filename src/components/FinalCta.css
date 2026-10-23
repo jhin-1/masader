@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Section 8: Final Call to Action (.mx-cta, Theme: Signature Gradient Loop)
+   ========================================================================== */
+
+:root {
+  --mxc-ink: #091D0D;
+  --mxc-mist: #EFF5ED;
+  --mxc-gold: #F4AF35;
+  --mxc-leaf: #9DCB5B;
+  --mxc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mx-cta {
+  position: relative;
+  background: linear-gradient(90deg, #F4AF35 0%, #C9C05A 45%, #9DCB5B 100%);
+  color: var(--mxc-ink);
+  padding-block: clamp(4rem, 7vw, 6rem); /* py-16 lg:py-24 */
+  overflow: clip;
+}
+
+/* Architectural circular loop contours in the background */
+.mx-cta__bg-artwork {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+.mx-cta__container {
+  position: relative;
+  width: 100%;
+  max-width: 80rem; /* max-w-7xl */
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3.5vw, 1.5rem); /* px-6 */
+}
+
+/* Clean 2-column flex alignment: Content on left, Action buttons on right */
+.mx-cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+@media (min-width: 1024px) {
+  .mx-cta__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+}
+
+.mx-cta__content {
+  flex: 1;
+  min-width: 0;
+  max-width: 46rem;
+}
+
+/* Heading H2 */
+.mx-cta__heading {
+  font-family: var(--mx-font-display);
+  font-size: clamp(2rem, 1.6rem + 2vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--mxc-ink);
+  margin: 0;
+}
+
+/* Lead text */
+.mx-cta__lead {
+  font-family: var(--mx-font-body);
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(9, 29, 13, 0.88);
+  margin-top: 0.875rem;
+  margin-bottom: 0;
+}
+
+/* Action Buttons Group */
+.mx-cta__actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 1. Phone Button (.mx-btn--phone) */
+.mx-btn--phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 14px 22px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--mxc-ink);
+  border: 1.5px solid rgba(9, 29, 13, 0.16);
+  font-family: var(--mx-font-mono);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 4px 14px -3px rgba(9, 29, 13, 0.12);
+  transition: transform 0.2s var(--mxc-ease), background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  white-space: nowrap;
+}
+
+.mx-btn--phone:hover {
+  background: var(--mxc-ink);
+  color: var(--mxc-mist);
+  border-color: var(--mxc-ink);
+  box-shadow: 0 10px 24px -6px rgba(9, 29, 13, 0.35);
+  transform: translateY(-2px);
+}
+
+.mx-btn--phone:active {
+  transform: translateY(0);
+}
+
+.mx-btn--phone svg {
+  width: 17px;
+  height: 17px;
+  color: currentColor;
+  flex-shrink: 0;
+}
+
+/* 2. Contact Us Button (.mx-btn--dark) */
+.mx-btn--dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 15px 28px;
+  border-radius: 8px;
+  background: var(--mxc-ink);
+  color: var(--mxc-mist);
+  font-family: var(--mx-font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 24px -6px rgba(9, 29, 13, 0.35);
+  transition: transform 0.2s var(--mxc-ease), background-color 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.mx-btn--dark:hover {
+  background: #18402A;
+  box-shadow: 0 14px 30px -6px rgba(9, 29, 13, 0.45);
+  transform: translateY(-2px);
+}
+
+.mx-btn--dark:active {
+  transform: translateY(0);
+}
+
+.mx-btn--dark svg {
+  width: 17px;
+  height: 17px;
+  color: var(--mxc-gold);
+  transition: transform 0.2s var(--mxc-ease);
+}
+
+.mx-btn--dark:hover svg {
+  transform: translateX(3px);
+}

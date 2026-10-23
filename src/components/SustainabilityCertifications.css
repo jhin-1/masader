@@ -1,0 +1,335 @@
+/* ==========================================================================
+   Section 5: Sustainability & Certifications (.mx-sustain, Theme: Dark #091D0D)
+   ========================================================================== */
+
+:root {
+  --mxs-bg: #091D0D;
+  --mxs-mist: #EFF5ED;
+  --mxs-sub: #839085;
+  --mxs-text: rgba(239, 245, 237, 0.72);
+  --mxs-leaf: #9DCB5B;
+  --mxs-gold: #F4AF35;
+  --mxs-line: rgba(239, 245, 237, 0.10);
+  --mxs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mx-sustain {
+  position: relative;
+  background-color: var(--mxs-bg);
+  color: var(--mxs-mist);
+  padding-block: clamp(5rem, 7vw, 7rem); /* Compact py-20 lg:py-28 */
+  overflow: clip;
+}
+
+/* Subtle dark radial depth */
+.mx-sustain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 80% 50%, rgba(24, 64, 42, 0.45) 0%, transparent 60%),
+    radial-gradient(circle at 20% 30%, rgba(157, 203, 91, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Balanced max-w-7xl container */
+.mx-sustain__container {
+  position: relative;
+  width: 100%;
+  max-width: 80rem; /* max-w-7xl */
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+/* 2-Column Grid: Left 7 Cols, Right 5 Cols */
+.mx-sustain__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .mx-sustain__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 3rem; /* gap-12 */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Left Column: Content & Call To Action (7 Cols)
+   -------------------------------------------------------------------------- */
+.mx-sustain__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .mx-sustain__content {
+    grid-column: span 7 / span 7;
+  }
+}
+
+/* Eyebrow */
+.mx-sustain .mx-eyebrow {
+  display: inline-block;
+  font-family: var(--mx-font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mxs-leaf);
+  margin: 0;
+}
+
+.mx-sustain .mx-eyebrow::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background: var(--mxs-gold);
+}
+
+/* Heading H2 */
+.mx-sustain__heading {
+  font-family: var(--mx-font-display);
+  font-size: clamp(2.2rem, 1.8rem + 2vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--mxs-mist);
+  margin: 0;
+  max-width: 24ch;
+}
+
+/* Lead text */
+.mx-sustain .mx-lead {
+  font-family: var(--mx-font-body);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--mxs-text);
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* Action Button (.mx-btn-primary) */
+.mx-sustain__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.mx-sustain .mx-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 13px 26px;
+  border-radius: 8px;
+  background: var(--mxs-gold);
+  color: var(--mxs-bg);
+  font-family: var(--mx-font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -8px rgba(244, 175, 53, 0.55);
+  transition: background-color 0.2s ease, 
+              box-shadow 0.2s ease, 
+              transform 0.2s var(--mxs-ease);
+}
+
+.mx-sustain .mx-btn-primary:hover {
+  background: #F7BF55;
+  box-shadow: 0 12px 28px -6px rgba(244, 175, 53, 0.75);
+  transform: translateY(-2px);
+}
+
+.mx-sustain .mx-btn-primary:active {
+  transform: translateY(0);
+}
+
+.mx-sustain .mx-btn-primary svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.mx-sustain .mx-btn-primary:hover svg {
+  transform: translateX(3px);
+}
+
+/* Trust tags below button */
+.mx-sustain__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--mxs-line);
+  margin-top: 0.5rem;
+}
+
+.mx-sustain__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mx-font-mono);
+  font-size: 0.75rem;
+  color: var(--mxs-sub);
+  letter-spacing: 0.02em;
+}
+
+.mx-sustain__tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mxs-leaf);
+  box-shadow: 0 0 8px rgba(157, 203, 91, 0.8);
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Gauge Visual (5 Cols)
+   -------------------------------------------------------------------------- */
+.mx-sustain__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .mx-sustain__visual {
+    grid-column: span 5 / span 5;
+  }
+}
+
+.mx-gauge-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 340px);
+  aspect-ratio: 1 / 1;
+}
+
+/* Radial Glow Backplate */
+.mx-gauge-glow {
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(157, 203, 91, 0.16) 0%, rgba(244, 175, 53, 0.10) 45%, transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+/* Circular Plate */
+.mx-gauge-plate {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 40%, rgba(24, 64, 42, 0.4) 0%, rgba(9, 29, 13, 0.85) 75%);
+  border: 1px solid rgba(239, 245, 237, 0.08);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* SVG Gauge (.mx-gauge.mx-ring) */
+.mx-gauge.mx-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Outer decorative ticks ring (r="140", dashed stroke, 60s continuous rotation) */
+.mx-gauge__ticks-ring {
+  transform-origin: 150px 150px;
+  animation: mxTicksRotate 60s linear infinite;
+  will-change: transform;
+}
+
+@keyframes mxTicksRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Progress circle with pathLength="100" and transform="rotate(-90 150 150)" */
+.mx-gauge__progress {
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: stroke-dashoffset;
+}
+
+.mx-gauge.is-animated .mx-gauge__progress {
+  stroke-dashoffset: 10; /* 90% fill of pathLength 100 */
+}
+
+/* Center Readout Overlay */
+.mx-gauge__readout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.mx-gauge__value-row {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  line-height: 1;
+}
+
+.mx-gauge__val {
+  font-family: var(--mx-font-display);
+  font-size: clamp(3.5rem, 3rem + 1.8vw, 4.75rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--mxs-mist);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.mx-gauge__unit {
+  font-family: var(--mx-font-display);
+  font-size: clamp(1.85rem, 1.6rem + 0.6vw, 2.5rem);
+  font-weight: 700;
+  color: var(--mxs-gold);
+  margin-left: 2px;
+}
+
+.mx-gauge__label {
+  display: block;
+  font-family: var(--mx-font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mxs-leaf);
+  margin-top: 4px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .mx-gauge__ticks-ring {
+    animation: none !important;
+  }
+  .mx-gauge__progress {
+    transition: none !important;
+  }
+}
