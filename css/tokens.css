@@ -1,0 +1,97 @@
+/* ==========================================================================
+   MASADER DESIGN TOKENS (tokens.css)
+   Strictly aligned with cursorrules.v3.md and CONTENT_SPEC.md
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Font Definitions with Fallback Metric Overrides (CLS Prevention)
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Masader Display";
+  src: url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-display.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Masader Display Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+@font-face {
+  font-family: "Masader Sans";
+  src: url("https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-sans.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Masader Sans Fallback";
+  src: local("Inter"), local("Arial"), system-ui;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Design Tokens (:root)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Core Color Palette */
+  --mx-ink: #091D0D;
+  --mx-ink-elevated: #0E2914;
+  --mx-mist: #EFF5ED;
+  --mx-mist-card: #FFFFFF;
+  --mx-sage: #839085;
+  --mx-leaf: #9DCB5B;
+  --mx-gold: #F4AF35;
+
+  /* Gradient Loop */
+  --mx-gradient-loop: linear-gradient(90deg, #F4AF35 0%, #C9C05A 45%, #9DCB5B 100%);
+
+  /* Hairline Borders */
+  --mx-border-dark: rgba(157, 203, 91, 0.16);
+  --mx-border-light: rgba(9, 29, 13, 0.10);
+
+  /* Typography Stacks */
+  --font-display: "Masader Display", "Masader Display Fallback", Georgia, "Times New Roman", serif;
+  --font-sans: "Masader Sans", "Masader Sans Fallback", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Masader Mono", "JetBrains Mono", monospace;
+  --font-arabic: "Masader Arabic", "Amiri", "Noto Naskh Arabic", serif;
+
+  /* Fluid Typography Scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
+  --text-sm: clamp(0.8125rem, 0.77rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 0.88rem + 0.3vw, 1.0625rem);
+  --text-lg: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  --text-3xl: clamp(2rem, 1.75rem + 1.2vw, 2.75rem);
+  --text-4xl: clamp(2.5rem, 2.1rem + 2vw, 3.5rem);
+  --text-h1: clamp(2.75rem, 2.2rem + 3vw, 4.5rem);
+
+  /* Motion Tokens */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 640ms;
+  --dur-4: 1100ms;
+
+  /* Layer Hierarchy */
+  --z-base: 1;
+  --z-header: 50;
+  --z-overlay: 80;
+
+  /* Spatial Tokens */
+  --container-max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-pad-y: clamp(5rem, 10vw, 8.5rem);
+}

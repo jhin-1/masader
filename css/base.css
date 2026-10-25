@@ -1,0 +1,195 @@
+/* ==========================================================================
+   MASADER BASE STYLES (base.css)
+   Performance-first CSS reset, typography, theme roots, and accessibility
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Box Sizing & Reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Root & Body Foundation
+   -------------------------------------------------------------------------- */
+html {
+  font-family: var(--font-sans);
+  background-color: var(--mx-ink);
+  color: var(--mx-mist);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  background-color: var(--mx-ink);
+  color: var(--mx-mist);
+  overflow-x: hidden;
+}
+
+/* Text Selection */
+::selection {
+  background-color: var(--mx-gold);
+  color: var(--mx-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Theme Roots (.mx-dark, .mx-light)
+   -------------------------------------------------------------------------- */
+.mx-dark {
+  background-color: var(--mx-ink);
+  color: var(--mx-mist);
+  --theme-bg: var(--mx-ink);
+  --theme-text: var(--mx-mist);
+  --theme-muted: var(--mx-sage);
+  --theme-border: var(--mx-border-dark);
+  --theme-card-bg: var(--mx-ink-elevated);
+}
+
+.mx-light {
+  background-color: var(--mx-mist);
+  color: var(--mx-ink);
+  --theme-bg: var(--mx-mist);
+  --theme-text: var(--mx-ink);
+  --theme-muted: #596B5F;
+  --theme-border: var(--mx-border-light);
+  --theme-card-bg: var(--mx-mist-card);
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility & Focus System (cursorrules.v3.md §7)
+   -------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--mx-leaf);
+  outline-offset: 3px;
+}
+
+.mx-light :focus-visible {
+  outline-color: var(--mx-ink);
+}
+
+/* Skip to content link */
+.mx-skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--mx-leaf);
+  color: var(--mx-ink);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.mx-skip-link:focus {
+  top: 1rem;
+  outline: 2px solid var(--mx-gold);
+}
+
+/* Screen reader text */
+.screen-reader-text,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Typography Baseline
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: inherit;
+}
+
+/* Tabular numbers for mono metrics, steps and spec badges */
+.font-mono,
+[data-mono],
+.mx-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gradient text accent */
+.mx-gradient-text {
+  background: var(--mx-gradient-loop);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Media Elements */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Performance Budget Optimizations (cursorrules.v3.md §4)
+   -------------------------------------------------------------------------- */
+/* Sections below the fold use content-visibility to minimize initial layout work */
+main > section:nth-of-type(n+2) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Preferences (cursorrules.v3.md §5)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

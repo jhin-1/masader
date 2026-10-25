@@ -9,8 +9,10 @@ export default function HeroSection() {
   const fallRef = useRef(null);
   const ripplesRef = useRef([]);
   const segRefs = useRef([]);
+  const hexSegRefs = useRef([]);
   const wordArRef = useRef(null);
   const wordEnRef = useRef(null);
+  const wordsContainerRef = useRef(null);
   const gradientTextRef = useRef(null);
   const hexRef = useRef(null);
   const primaryBtnRef = useRef(null);
@@ -24,6 +26,7 @@ export default function HeroSection() {
   // Clockwise order of segment IDs from top: 1, 2, 4, 6, 5, 3
   const CLOCKWISE = [1, 2, 4, 6, 5, 3];
 
+  // 1. Initial Assembly & Entrance Animation
   useEffect(() => {
     const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -45,14 +48,13 @@ export default function HeroSection() {
       return;
     }
 
-    // Initial animation states
-    gsap.set(segs, { opacity: 0.18 });
+    // Set initial states
+    gsap.set(segs, { opacity: 0.15 });
     gsap.set(drop, { opacity: 0, transformOrigin: '50% 75%' });
-    gsap.set(rings, { scale: 0.25, opacity: 0 });
+    gsap.set(rings, { scale: 0.2, opacity: 0 });
     gsap.set(wordAr, { clipPath: 'inset(0% 0% 0% 100%)' }); // Right to left reveal
     gsap.set(wordEn, { clipPath: 'inset(0% 100% 0% 0%)' }); // Left to right reveal
 
-    // Master hero timeline
     const tl = gsap.timeline({
       delay: 0.2,
       onComplete: () => {
@@ -63,38 +65,38 @@ export default function HeroSection() {
       },
     });
 
-    // 0.3s - 1.3s: Fall guide line and falling drop
+    // 0.2s - 1.1s: Vertical guide line and falling drop
     tl.fromTo(
       fall,
       { scaleY: 0, opacity: 0 },
-      { scaleY: 1, opacity: 0.8, duration: 0.45, ease: 'power2.out' },
+      { scaleY: 1, opacity: 0.85, duration: 0.45, ease: 'power2.out' },
       0.2
     )
       .to(drop, { opacity: 1, duration: 0.1 }, 0.35)
       .fromTo(
         drop,
-        { y: -160, scaleY: 1.35, scaleX: 0.8 },
+        { y: -180, scaleY: 1.4, scaleX: 0.75 },
         { y: 0, duration: 0.75, ease: 'power2.in' },
         0.35
       )
       // 1.1s: Impact - squash & bounce
-      .to(drop, { scaleY: 0.78, scaleX: 1.2, duration: 0.09, ease: 'power2.out' }, 1.1)
+      .to(drop, { scaleY: 0.75, scaleX: 1.25, duration: 0.09, ease: 'power2.out' }, 1.1)
       .to(drop, { scaleY: 1, scaleX: 1, duration: 0.45, ease: 'back.out(3.2)' }, 1.19)
       .to(fall, { opacity: 0, duration: 0.3 }, 1.1)
-      // 1.1s: Impact waves (3 ripples)
+      // 1.12s: Impact waves (3 ripples)
       .fromTo(
         rings,
-        { scale: 0.25, opacity: 0.85 },
-        { scale: 2.5, opacity: 0, duration: 1.1, ease: 'power2.out', stagger: 0.15 },
+        { scale: 0.25, opacity: 0.9 },
+        { scale: 2.6, opacity: 0, duration: 1.2, ease: 'power2.out', stagger: 0.16 },
         1.12
       )
-      // 1.15s - 1.9s: Clockwise lighting of the 6 segments
-      .to(segs, { opacity: 1, duration: 0.32, ease: 'power1.out', stagger: 0.11 }, 1.18)
+      // 1.18s: Clockwise lighting of the 6 segments
+      .to(segs, { opacity: 1, duration: 0.35, ease: 'power1.out', stagger: 0.1 }, 1.18)
       // 1.8s - 2.5s: Arabic & English wordmark reveals
-      .to(wordAr, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.65, ease: 'power2.inOut' }, 1.8)
-      .to(wordEn, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.65, ease: 'power2.inOut' }, 2.15);
+      .to(wordAr, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.65, ease: 'power2.inOut' }, 1.75)
+      .to(wordEn, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.65, ease: 'power2.inOut' }, 2.1);
 
-    // Headline gold text sheen wipe effect
+    // Headline gold text sheen wipe
     if (goldText) {
       tl.call(
         () => {
@@ -104,7 +106,7 @@ export default function HeroSection() {
             { backgroundPosition: '0% 50%' },
             {
               backgroundPosition: '100% 50%',
-              duration: 1.0,
+              duration: 1.1,
               ease: 'power2.inOut',
               onComplete: () => {
                 goldText.classList.remove('is-sheen');
@@ -117,15 +119,15 @@ export default function HeroSection() {
       );
     }
 
-    // Metric numbers animated counter
+    // Monospace Metric numbers counter animation
     const metricObj = { val1: 0, val2a: 0, val2b: 0, val3: 0 };
     gsap.to(metricObj, {
       val1: 12000,
       val2a: 85,
       val2b: 95,
       val3: 100,
-      duration: 1.8,
-      delay: 0.8,
+      duration: 1.9,
+      delay: 0.7,
       ease: 'power2.out',
       onUpdate: () => {
         setMetric1(Math.round(metricObj.val1).toLocaleString('en-US'));
@@ -139,42 +141,157 @@ export default function HeroSection() {
       },
     });
 
-    // Magnetic button effects for desktop
-    const isDesktop = window.matchMedia('(min-width: 1025px) and (hover: hover)').matches;
-    const cleanups = [];
-
-    if (isDesktop) {
-      [primaryBtnRef.current, ghostBtnRef.current].filter(Boolean).forEach((btn) => {
-        const handleMove = (e) => {
-          const rect = btn.getBoundingClientRect();
-          const x = (e.clientX - (rect.left + rect.width / 2)) * 0.28;
-          const y = (e.clientY - (rect.top + rect.height / 2)) * 0.28;
-          gsap.to(btn, { x, y, duration: 0.4, ease: 'power3.out' });
-        };
-        const handleLeave = () => {
-          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'power3.out' });
-        };
-
-        btn.addEventListener('mousemove', handleMove);
-        btn.addEventListener('mouseleave', handleLeave);
-        cleanups.push(() => {
-          btn.removeEventListener('mousemove', handleMove);
-          btn.removeEventListener('mouseleave', handleLeave);
-        });
-      });
-    }
-
     return () => {
       tl.kill();
-      cleanups.forEach((fn) => fn());
     };
   }, []);
 
+  // 2. 60fps 3D Mouse Parallax & Orbital Float Interaction
+  useEffect(() => {
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    if (isReducedMotion || isTouch) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let animFrameId = null;
+
+    const handleMouseMove = (e) => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      if (
+        e.clientY < rect.top - 100 ||
+        e.clientY > rect.bottom + 100 ||
+        e.clientX < rect.left ||
+        e.clientX > rect.right
+      ) {
+        targetX = 0;
+        targetY = 0;
+        return;
+      }
+
+      // Normalized coordinates: -1 to 1 from center
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      targetX = Math.max(-1, Math.min(1, (e.clientX - centerX) / (rect.width / 2)));
+      targetY = Math.max(-1, Math.min(1, (e.clientY - centerY) / (rect.height / 2)));
+    };
+
+    const handleMouseLeave = () => {
+      targetX = 0;
+      targetY = 0;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseleave', handleMouseLeave);
+
+    // 60fps Render Loop using lerp
+    const render = () => {
+      currentX += (targetX - currentX) * 0.075;
+      currentY += (targetY - currentY) * 0.075;
+
+      const rotX = -currentY * 14;
+      const rotY = currentX * 16;
+
+      // Center mark 3D tilt
+      if (markRef.current) {
+        markRef.current.style.transform = `translate3d(${currentX * 18}px, ${
+          currentY * 18
+        }px, 0px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      }
+
+      // Gold drop forward parallax
+      if (dropRef.current) {
+        dropRef.current.style.transform = `translate3d(${currentX * 15}px, ${
+          currentY * 15
+        }px, 35px)`;
+      }
+
+      // Wordmarks 3D offset
+      if (wordsContainerRef.current) {
+        wordsContainerRef.current.style.transform = `translate3d(${currentX * 10}px, ${
+          currentY * 10
+        }px, 20px) rotateX(${rotX * 0.4}deg) rotateY(${rotY * 0.4}deg)`;
+      }
+
+      // Ambient hexagon background counter-parallax
+      if (hexRef.current) {
+        hexRef.current.style.transform = `translate3d(${-currentX * 24}px, ${
+          -currentY * 24
+        }px, -45px)`;
+      }
+
+      // Differential segment depths for exploded 3D effect
+      const segmentOffsets = [
+        { z: 12, mul: 0.7 },
+        { z: 18, mul: 1.1 },
+        { z: 14, mul: 0.8 },
+        { z: 20, mul: 1.2 },
+        { z: 16, mul: 0.9 },
+        { z: 17, mul: 1.0 },
+      ];
+
+      segRefs.current.forEach((seg, idx) => {
+        if (!seg) return;
+        const config = segmentOffsets[idx] || { z: 15, mul: 1 };
+        seg.style.transform = `translate3d(${currentX * 8 * config.mul}px, ${
+          currentY * 8 * config.mul
+        }px, ${config.z}px)`;
+      });
+
+      animFrameId = requestAnimationFrame(render);
+    };
+
+    animFrameId = requestAnimationFrame(render);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+    };
+  }, []);
+
+  // 3. Magnetic Button Hover Micro-interactions
+  useEffect(() => {
+    const isDesktop = window.matchMedia('(min-width: 1025px) and (hover: hover)').matches;
+    if (!isDesktop) return;
+
+    const cleanups = [];
+    [primaryBtnRef.current, ghostBtnRef.current].filter(Boolean).forEach((btn) => {
+      const handleMove = (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - (rect.left + rect.width / 2)) * 0.28;
+        const y = (e.clientY - (rect.top + rect.height / 2)) * 0.28;
+        gsap.to(btn, { x, y, duration: 0.35, ease: 'power3.out' });
+      };
+      const handleLeave = () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.45, ease: 'power3.out' });
+      };
+
+      btn.addEventListener('mousemove', handleMove);
+      btn.addEventListener('mouseleave', handleLeave);
+      cleanups.push(() => {
+        btn.removeEventListener('mousemove', handleMove);
+        btn.removeEventListener('mouseleave', handleLeave);
+      });
+    });
+
+    return () => cleanups.forEach((fn) => fn());
+  }, []);
+
   return (
-    <section className="mx-hero" id="hero" ref={sectionRef}>
+    <section className="mx-hero mx-dark" id="hero" ref={sectionRef}>
+      {/* Background Architectural Grid Lines & Glow Orbs */}
+      <div className="mx-hero__bg-grid" aria-hidden="true" />
+      <div className="mx-hero__ambient-glow" aria-hidden="true" />
+
       <div className="mx-hero__container">
         <div className="mx-hero__grid">
-          {/* Left Column: Exact Content from Section 5.1 of spec */}
+          {/* Left Column: Exact Content from Section 5.1 of CONTENT_SPEC.md */}
           <div className="mx-hero__content">
             {/* Eyebrow / Kicker */}
             <div className="mx-hero__eyebrow-row">
@@ -208,7 +325,8 @@ export default function HeroSection() {
                 className="mx-btn-primary"
                 href="https://masaderbio.com/web/contact/"
               >
-                Request a Quotation
+                <span className="mx-btn-primary__text">Request a Quotation</span>
+                <span className="mx-btn-primary__shimmer" aria-hidden="true" />
               </a>
               <a
                 ref={ghostBtnRef}
@@ -219,17 +337,31 @@ export default function HeroSection() {
               </a>
             </div>
 
-            {/* Metrics Bar */}
-            <div className="mx-metrics">
-              <div className="mx-metric">
+            {/* Redesigned Glassmorphic Bento Strip Metrics Bar */}
+            <div className="mx-metrics mx-metrics--bento" role="region" aria-label="Key Metrics">
+              <div className="mx-metric mx-metric--bento">
+                <div className="mx-metric__header">
+                  <span className="mx-metric__dot" aria-hidden="true" />
+                  <span className="mx-metric__tag">CAPACITY</span>
+                </div>
                 <div className="mx-metric__value">{metric1}</div>
                 <div className="mx-metric__label">MTPA certified capacity</div>
               </div>
-              <div className="mx-metric">
+
+              <div className="mx-metric mx-metric--bento">
+                <div className="mx-metric__header">
+                  <span className="mx-metric__dot mx-metric__dot--leaf" aria-hidden="true" />
+                  <span className="mx-metric__tag">GHG IMPACT</span>
+                </div>
                 <div className="mx-metric__value">{metric2}</div>
                 <div className="mx-metric__label">GHG reduction, UCOME</div>
               </div>
-              <div className="mx-metric">
+
+              <div className="mx-metric mx-metric--bento">
+                <div className="mx-metric__header">
+                  <span className="mx-metric__dot mx-metric__dot--verified" aria-hidden="true" />
+                  <span className="mx-metric__tag">AUDITED</span>
+                </div>
                 <div className="mx-metric__value">{metric3}</div>
                 <div className="mx-metric__label">mass-balance traceable</div>
               </div>
@@ -246,6 +378,7 @@ export default function HeroSection() {
               {/* Ambient 6 Hexagon Segments (744w) Background Art */}
               <span className="mx-hero-hex" aria-hidden="true" ref={hexRef}>
                 <img
+                  ref={(el) => (hexSegRefs.current[0] = el)}
                   loading="lazy"
                   className="mx-hero-hex__seg mx-hero-hex__seg-1"
                   src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg1-top-dark-744.webp"
@@ -257,6 +390,7 @@ export default function HeroSection() {
                   decoding="async"
                 />
                 <img
+                  ref={(el) => (hexSegRefs.current[1] = el)}
                   loading="lazy"
                   className="mx-hero-hex__seg mx-hero-hex__seg-2"
                   src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg2-top-right-lime-744.webp"
@@ -268,6 +402,7 @@ export default function HeroSection() {
                   decoding="async"
                 />
                 <img
+                  ref={(el) => (hexSegRefs.current[2] = el)}
                   loading="lazy"
                   className="mx-hero-hex__seg mx-hero-hex__seg-3"
                   src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg3-left-dark-744.webp"
@@ -279,6 +414,7 @@ export default function HeroSection() {
                   decoding="async"
                 />
                 <img
+                  ref={(el) => (hexSegRefs.current[3] = el)}
                   loading="lazy"
                   className="mx-hero-hex__seg mx-hero-hex__seg-4"
                   src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg4-right-green-744.webp"
@@ -290,6 +426,7 @@ export default function HeroSection() {
                   decoding="async"
                 />
                 <img
+                  ref={(el) => (hexSegRefs.current[4] = el)}
                   loading="lazy"
                   className="mx-hero-hex__seg mx-hero-hex__seg-5"
                   src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg5-bottom-left-744.webp"
@@ -301,6 +438,7 @@ export default function HeroSection() {
                   decoding="async"
                 />
                 <img
+                  ref={(el) => (hexSegRefs.current[5] = el)}
                   loading="lazy"
                   className="mx-hero-hex__seg mx-hero-hex__seg-6"
                   src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg6-bottom-right-744.webp"
@@ -315,11 +453,16 @@ export default function HeroSection() {
 
               {/* Center Mark Layers (aria-label: Masader مصادر) */}
               <span className="mx-hero-layer mx-hero-logo">
-                <span className="mx-hero-mark" role="img" aria-label="Masader مصادر" ref={markRef}>
+                <span
+                  className="mx-hero-mark"
+                  role="img"
+                  aria-label="Masader مصادر"
+                  ref={markRef}
+                >
                   {/* Vertical Fall Line */}
                   <span className="mx-hero-fall" aria-hidden="true" ref={fallRef}></span>
 
-                  {/* 6 Center Mark Segments */}
+                  {/* 6 Center Mark Segments (372w / 744w) */}
                   <img
                     ref={(el) => (segRefs.current[0] = el)}
                     fetchPriority="high"
@@ -395,12 +538,12 @@ export default function HeroSection() {
 
                   {/* 3 Ripple Waves */}
                   <span className="mx-hero-ripples" aria-hidden="true">
-                    <span className="mx-hero-ripple" ref={(el) => (ripplesRef.current[0] = el)}></span>
-                    <span className="mx-hero-ripple" ref={(el) => (ripplesRef.current[1] = el)}></span>
-                    <span className="mx-hero-ripple" ref={(el) => (ripplesRef.current[2] = el)}></span>
+                    <span className="mx-hero-ripple mx-hero-ripple--1" ref={(el) => (ripplesRef.current[0] = el)}></span>
+                    <span className="mx-hero-ripple mx-hero-ripple--2" ref={(el) => (ripplesRef.current[1] = el)}></span>
+                    <span className="mx-hero-ripple mx-hero-ripple--3" ref={(el) => (ripplesRef.current[2] = el)}></span>
                   </span>
 
-                  {/* Gold Center Drop */}
+                  {/* Gold Center Drop (372w / 744w) */}
                   <img
                     ref={dropRef}
                     fetchPriority="high"
@@ -416,7 +559,7 @@ export default function HeroSection() {
                 </span>
 
                 {/* Wordmarks: Arabic & English */}
-                <span className="mx-hero-words" aria-hidden="true">
+                <span className="mx-hero-words" aria-hidden="true" ref={wordsContainerRef}>
                   <img
                     ref={wordArRef}
                     fetchPriority="high"
@@ -426,8 +569,15 @@ export default function HeroSection() {
                     sizes="(min-width: 1025px) min(20vw, 34svh, 300px), 46vw"
                     width="1518"
                     height="563"
-                    alt=""
+                    alt="مصادر"
                     decoding="async"
+                    onError={(e) => {
+                      if (!e.currentTarget.dataset.fallback) {
+                        e.currentTarget.dataset.fallback = '1';
+                        e.currentTarget.src = '/assets/web/arabic-wordmark-1518.webp';
+                        e.currentTarget.srcset = '';
+                      }
+                    }}
                   />
                   <img
                     ref={wordEnRef}
@@ -438,8 +588,15 @@ export default function HeroSection() {
                     sizes="(min-width: 1025px) min(20vw, 34svh, 300px), 46vw"
                     width="1518"
                     height="219"
-                    alt=""
+                    alt="masader"
                     decoding="async"
+                    onError={(e) => {
+                      if (!e.currentTarget.dataset.fallback) {
+                        e.currentTarget.dataset.fallback = '1';
+                        e.currentTarget.src = '/assets/web/english-wordmark-1518.webp';
+                        e.currentTarget.srcset = '';
+                      }
+                    }}
                   />
                 </span>
               </span>

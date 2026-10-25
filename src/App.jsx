@@ -15,7 +15,7 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#091D0D] text-[#EFF5ED]">
+    <div className="min-h-screen bg-[#091D0D] text-[#EFF5ED] selection:bg-[#F4AF35] selection:text-[#091D0D]">
       {/* 1. Site Header (Section 3 of CONTENT_SPEC.md) */}
       <SiteHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
@@ -27,28 +27,28 @@ export default function App() {
         {/* Phase 1: Section 1 / 5.1: Hero Section */}
         <HeroSection />
 
-        {/* Phase 2: Section 2 / 5.2: How The Loop Closes */}
+        {/* Section 2: How The Loop Closes */}
         <HowTheLoopCloses />
 
-        {/* Phase 2: Section 3 / 5.3: Our Products */}
+        {/* Section 3: Our Products */}
         <OurProducts />
 
-        {/* Phase 3: Section 4 / 5.4: Why Masader */}
+        {/* Section 4: Why Masader */}
         <WhyMasader />
 
-        {/* Phase 3: Section 5 / 5.5: Sustainability & Certifications */}
+        {/* Section 5: Sustainability & Certifications */}
         <SustainabilityCertifications />
 
-        {/* Phase 3: Section 6 / 5.6: Where It Goes */}
+        {/* Section 6: Where It Goes */}
         <WhereItGoes />
 
-        {/* Phase 4: Section 7 / 5.7: News & Insights */}
+        {/* Section 7: News & Insights */}
         <NewsInsights />
 
-        {/* Phase 4: Section 8 / 5.8: Final Call to Action */}
+        {/* Section 8: Final Call to Action */}
         <FinalCta />
 
-        {/* Phase 4: Section 9 / 5.9: Footer */}
+        {/* Section 9: Footer */}
         <Footer />
       </main>
     </div>

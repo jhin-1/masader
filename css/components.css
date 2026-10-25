@@ -1,0 +1,208 @@
+/* ==========================================================================
+   MASADER REUSABLE COMPONENTS (components.css)
+   Precision Eco-Industrial Luxury buttons, brand icons, and interactive elements
+   Strictly adhering to cursorrules.v3.md §3, §4, §5 & §6
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Buttons (.mx-btn)
+   Hardware-accelerated transforms & opacity only (cursorrules.v3.md §5)
+   -------------------------------------------------------------------------- */
+.mx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.75rem 1.625rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--dur-1) var(--ease-out),
+              background-color var(--dur-2) var(--ease-out),
+              border-color var(--dur-2) var(--ease-out),
+              color var(--dur-2) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.mx-btn:active {
+  transform: scale(0.97);
+}
+
+/* Primary Button (Eco-industrial leaf accent) */
+.mx-btn--primary {
+  background-color: var(--mx-leaf);
+  color: var(--mx-ink);
+  border: 1px solid var(--mx-leaf);
+  box-shadow: 0 2px 12px rgba(157, 203, 91, 0.22);
+}
+
+.mx-btn--primary:hover {
+  background-color: #AEE066;
+  border-color: #AEE066;
+  box-shadow: 0 4px 20px rgba(157, 203, 91, 0.35);
+}
+
+/* Ghost Button (Dark hairline glass) */
+.mx-btn--ghost {
+  background-color: transparent;
+  color: var(--mx-mist);
+  border: 1px solid var(--mx-border-dark);
+}
+
+.mx-btn--ghost:hover {
+  background-color: rgba(157, 203, 91, 0.08);
+  border-color: var(--mx-leaf);
+  color: #FFFFFF;
+}
+
+/* Full Width Utility */
+.mx-btn--full {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Brand Link & Animated Logo Icon (.mx-brand)
+   Hover segment assembly (cursorrules.v3.md §6.1)
+   -------------------------------------------------------------------------- */
+.mx-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.mx-brand__icon {
+  position: relative;
+  width: 32px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.mx-brand__icon-base {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.2;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+
+.mx-brand__seg,
+.mx-brand__drop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--dur-2) var(--ease-out),
+              opacity var(--dur-2) var(--ease-out);
+}
+
+/* Default resting state: subtly exploded out by 2-3px */
+.mx-brand__seg--1 { transform: translate3d(0, -3px, 0); }
+.mx-brand__seg--2 { transform: translate3d(2.5px, -1.8px, 0); }
+.mx-brand__seg--3 { transform: translate3d(-3px, 0, 0); }
+.mx-brand__seg--4 { transform: translate3d(3px, 0, 0); }
+.mx-brand__seg--5 { transform: translate3d(-2.5px, 2px, 0); }
+.mx-brand__seg--6 { transform: translate3d(2.5px, 2px, 0); }
+.mx-brand__drop   { transform: translate3d(0, -4px, 0) scale(0.85); opacity: 0.75; }
+
+/* Assembled state on hover/focus */
+.mx-brand:hover .mx-brand__seg,
+.mx-brand:focus-visible .mx-brand__seg,
+.mx-brand__icon.is-assembling .mx-brand__seg,
+.mx-brand:hover .mx-brand__drop,
+.mx-brand:focus-visible .mx-brand__drop,
+.mx-brand__icon.is-assembling .mx-brand__drop {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+}
+
+/* Stagger delays on hover assembly (clockwise: 1, 2, 4, 6, 5, 3, drop) */
+.mx-brand:hover .mx-brand__seg--1 { transition-delay: 0ms; }
+.mx-brand:hover .mx-brand__seg--2 { transition-delay: 25ms; }
+.mx-brand:hover .mx-brand__seg--4 { transition-delay: 50ms; }
+.mx-brand:hover .mx-brand__seg--6 { transition-delay: 75ms; }
+.mx-brand:hover .mx-brand__seg--5 { transition-delay: 100ms; }
+.mx-brand:hover .mx-brand__seg--3 { transition-delay: 125ms; }
+.mx-brand:hover .mx-brand__drop   { transition-delay: 150ms; }
+
+.mx-brand__word {
+  display: flex;
+  align-items: center;
+}
+
+.mx-brand__word-img {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Burger Toggle Button (.mx-burger)
+   -------------------------------------------------------------------------- */
+.mx-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--mx-border-dark);
+  background-color: rgba(9, 29, 13, 0.4);
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: border-color var(--dur-2) var(--ease-out),
+              background-color var(--dur-2) var(--ease-out);
+}
+
+.mx-burger:hover {
+  border-color: var(--mx-leaf);
+  background-color: rgba(157, 203, 91, 0.08);
+}
+
+.mx-burger__icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 20px;
+  height: 14px;
+}
+
+.mx-burger__bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--mx-mist);
+  border-radius: 1px;
+  transition: transform var(--dur-2) var(--ease-out),
+              opacity var(--dur-2) var(--ease-out);
+}
+
+/* Open state transformation to X */
+.mx-burger[aria-expanded="true"] .mx-burger__bar:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.mx-burger[aria-expanded="true"] .mx-burger__bar:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+@media (max-width: 1023px) {
+  .mx-burger {
+    display: flex;
+  }
+}

@@ -1,14 +1,16 @@
 <!doctype html>
-<html lang="en-US" class="scroll-smooth">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/webp" href="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/logo-icon-full-96.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>masader</title>
     <meta name="robots" content="max-image-preview:large" />
     <link rel="canonical" href="https://masaderbio.com/web/" />
 
-    <!-- Exact Font Preloads (Section 2 of CONTENT_SPEC.md) -->
+    <!-- Preconnect to Asset Origin (cursorrules.v3.md §2) -->
+    <link rel="preconnect" href="https://masaderbio.com" crossorigin />
+
+    <!-- Exact Font Preloads (CONTENT_SPEC.md §2 & cursorrules.v3.md §3) -->
     <link
       rel="preload"
       href="https://masaderbio.com/web/wp-content/themes/masader/assets/fonts/masader-display.woff2"
@@ -24,19 +26,1035 @@
       crossorigin
     />
 
-    <!-- Google Fonts fallbacks for system availability -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Architectural Stylesheets -->
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/sections.css" />
   </head>
-  <body class="bg-[#091D0D] text-[#EFF5ED] antialiased selection:bg-[#F4AF35] selection:text-[#091D0D]">
-    <!-- Accessibility Skip Link (Section 1 of CONTENT_SPEC.md) -->
-    <a href="#mx-main" class="screen-reader-text mx-skip-link">Skip to content</a>
+  <body>
+    <!-- Accessibility Skip Link (CONTENT_SPEC.md §1 & cursorrules.v3.md §7) -->
+    <a href="#mx-main" class="mx-skip-link">Skip to content</a>
 
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- Site Header Container (Section 3) -->
+    <header id="mx-header" class="mx-site-header" role="banner">
+      <div class="mx-header__inner mx-container">
+        <!-- Brand Link with Interactive Icon and Wordmark -->
+        <a href="https://masaderbio.com/web/" class="mx-brand" aria-label="Masader مصادر">
+          <span class="sr-only">Masader مصادر</span>
+          <div class="mx-brand__icon" aria-hidden="true">
+            <img
+              class="mx-brand__icon-base"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/logo-icon-full-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/logo-icon-full-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/logo-icon-full-96.webp 2x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/logo-icon-full-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+            <img
+              class="mx-brand__seg mx-brand__seg--1"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg1-top-dark-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg1-top-dark-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg1-top-dark-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+            <img
+              class="mx-brand__seg mx-brand__seg--2"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg2-top-right-lime-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg2-top-right-lime-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg2-top-right-lime-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+            <img
+              class="mx-brand__seg mx-brand__seg--3"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg3-left-dark-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg3-left-dark-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg3-left-dark-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+            <img
+              class="mx-brand__seg mx-brand__seg--4"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg4-right-green-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg4-right-green-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg4-right-green-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+            <img
+              class="mx-brand__seg mx-brand__seg--5"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg5-bottom-left-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg5-bottom-left-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg5-bottom-left-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+            <img
+              class="mx-brand__seg mx-brand__seg--6"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg6-bottom-right-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg6-bottom-right-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/seg6-bottom-right-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+            <img
+              class="mx-brand__drop"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/drop-gold-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/drop-gold-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/drop-gold-144.webp 3x"
+              alt=""
+              width="83"
+              height="96"
+            />
+          </div>
+          <div class="mx-brand__word">
+            <img
+              class="mx-brand__word-img"
+              src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/masader-wordmark-96.webp"
+              srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/masader-wordmark-96.webp 1x, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/masader-wordmark-144.webp 3x"
+              alt="Masader"
+              width="170"
+              height="96"
+            />
+          </div>
+        </a>
+
+        <!-- Primary Navigation Menu -->
+        <nav class="mx-nav" aria-label="Primary Navigation">
+          <ul class="mx-nav__list">
+            <li class="mx-nav__item"><a href="#" class="mx-nav__link">About Us</a></li>
+            <li class="mx-nav__item"><a href="#" class="mx-nav__link">Products</a></li>
+            <li class="mx-nav__item"><a href="#" class="mx-nav__link">Sustainability</a></li>
+            <li class="mx-nav__item"><a href="#" class="mx-nav__link">Facilities &amp; Process</a></li>
+            <li class="mx-nav__item"><a href="#" class="mx-nav__link">Markets &amp; Trading</a></li>
+            <li class="mx-nav__item"><a href="#" class="mx-nav__link">Careers</a></li>
+            <li class="mx-nav__item"><a href="https://masaderbio.com/web/contact/" class="mx-nav__link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Call-to-Action & Mobile Burger Trigger -->
+        <div class="mx-header__actions">
+          <a href="https://masaderbio.com/web/contact/" class="mx-btn mx-btn--primary mx-header-cta">Request a Quotation</a>
+          <button
+            type="button"
+            class="mx-burger"
+            aria-expanded="false"
+            aria-controls="mx-menu-overlay"
+            aria-label="Menu"
+          >
+            <span class="mx-burger__icon" aria-hidden="true">
+              <span class="mx-burger__bar"></span>
+              <span class="mx-burger__bar"></span>
+            </span>
+            <span class="sr-only">Menu</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Overlay (Section 4) -->
+    <div id="mx-menu-overlay" class="mx-menu-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mx-menu-overlay__backdrop"></div>
+      <div class="mx-menu-overlay__content mx-container">
+        <div class="mx-menu-overlay__header">
+          <a href="https://masaderbio.com/web/" class="mx-brand" aria-label="Masader مصادر">
+            <div class="mx-brand__icon" aria-hidden="true">
+              <img
+                src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/logo-icon-full-96.webp"
+                alt=""
+                width="83"
+                height="96"
+              />
+            </div>
+            <div class="mx-brand__word">
+              <img
+                src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/brand/masader-wordmark-96.webp"
+                alt="Masader"
+                width="170"
+                height="96"
+              />
+            </div>
+          </a>
+          <button type="button" class="mx-menu-overlay__close" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <nav class="mx-menu-overlay__nav" aria-label="Mobile Navigation List">
+          <ul class="mx-menu-overlay__list">
+            <li class="mx-menu-overlay__item"><a href="#" class="mx-menu-overlay__link">About Us</a></li>
+            <li class="mx-menu-overlay__item"><a href="#" class="mx-menu-overlay__link">Products</a></li>
+            <li class="mx-menu-overlay__item"><a href="#" class="mx-menu-overlay__link">Sustainability</a></li>
+            <li class="mx-menu-overlay__item"><a href="#" class="mx-menu-overlay__link">Facilities &amp; Process</a></li>
+            <li class="mx-menu-overlay__item"><a href="#" class="mx-menu-overlay__link">Markets &amp; Trading</a></li>
+            <li class="mx-menu-overlay__item"><a href="#" class="mx-menu-overlay__link">Careers</a></li>
+            <li class="mx-menu-overlay__item"><a href="https://masaderbio.com/web/contact/" class="mx-menu-overlay__link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="mx-menu-overlay__footer">
+          <a href="https://masaderbio.com/web/contact/" class="mx-btn mx-btn--primary mx-btn--full">Request a Quotation</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="mx-main">
+      <!-- Section 1: Hero Section (mx-hero, mx-dark) -->
+      <section id="mx-hero" class="mx-hero mx-dark" aria-label="Hero">
+        <div class="mx-hero__container mx-container">
+          <div class="mx-hero__grid">
+            <!-- Left Hero Content Column -->
+            <div class="mx-hero__content">
+              <!-- Eyebrow / Kicker -->
+              <div class="mx-hero__eyebrow">
+                Masader — Arabic for “resources” <span class="mx-hero__sep">·</span> ISCC EU certified
+              </div>
+
+              <!-- Main Heading (H1) - LCP Element, no JS opacity gate -->
+              <h1 class="mx-hero__title">
+                <span class="mx-hero__title-line"><span>Waste finds</span></span><br>
+                <span class="mx-hero__title-line"><span>its way back</span></span><br>
+                <span class="mx-hero__title-line"><span class="mx-gradient-text">into the loop.</span></span>
+              </h1>
+
+              <!-- Lead Text -->
+              <p class="mx-hero__lead">
+                ISCC EU-certified FAME, UCOME and glycerin from used cooking oil and recovered fatty-acid oils — 12,000 MTPA, engineered with CARBON, exported across Europe and Africa.
+              </p>
+
+              <!-- Action Buttons -->
+              <div class="mx-hero__actions">
+                <a href="https://masaderbio.com/web/contact/" class="mx-btn mx-btn--primary">Request a Quotation</a>
+                <a href="https://masaderbio.com/web/contact/" class="mx-btn mx-btn--ghost">Feedstock Partnerships</a>
+              </div>
+
+              <!-- Metrics Bar -->
+              <div class="mx-hero__metrics" role="region" aria-label="Key Metrics">
+                <div class="mx-hero__metric">
+                  <div class="mx-hero__metric-value font-mono" data-target="12000" data-format="comma">12,000</div>
+                  <div class="mx-hero__metric-label">MTPA certified capacity</div>
+                </div>
+                <div class="mx-hero__metric">
+                  <div class="mx-hero__metric-value font-mono" data-target="85-95" data-format="range">85–95%</div>
+                  <div class="mx-hero__metric-label">GHG reduction, UCOME</div>
+                </div>
+                <div class="mx-hero__metric">
+                  <div class="mx-hero__metric-value font-mono" data-target="100" data-format="percent">100%</div>
+                  <div class="mx-hero__metric-label">mass-balance traceable</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Hero 3D Orbital Visual Component -->
+            <div class="mx-hero__visual mx-visual--orbit" aria-hidden="true">
+              <!-- Ambient Hexagon Segments (744w) -->
+              <div class="mx-hero__ambient">
+                <img
+                  class="mx-ambient-seg mx-ambient-seg--1"
+                  src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg1-top-dark-744.webp"
+                  alt=""
+                  width="744"
+                  height="744"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  class="mx-ambient-seg mx-ambient-seg--2"
+                  src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg2-top-right-lime-744.webp"
+                  alt=""
+                  width="744"
+                  height="744"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  class="mx-ambient-seg mx-ambient-seg--3"
+                  src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg3-left-dark-744.webp"
+                  alt=""
+                  width="744"
+                  height="744"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  class="mx-ambient-seg mx-ambient-seg--4"
+                  src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg4-right-green-744.webp"
+                  alt=""
+                  width="744"
+                  height="744"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  class="mx-ambient-seg mx-ambient-seg--5"
+                  src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg5-bottom-left-744.webp"
+                  alt=""
+                  width="744"
+                  height="744"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  class="mx-ambient-seg mx-ambient-seg--6"
+                  src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg6-bottom-right-744.webp"
+                  alt=""
+                  width="744"
+                  height="744"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <!-- Center Mark Assembly with Ripples and Wordmarks -->
+              <div class="mx-hero__mark-wrap">
+                <div class="mx-hero__mark" aria-label="Masader مصادر">
+                  <!-- Expanding Pulse Ripples -->
+                  <span class="mx-hero-ripple mx-hero-ripple--1"></span>
+                  <span class="mx-hero-ripple mx-hero-ripple--2"></span>
+                  <span class="mx-hero-ripple mx-hero-ripple--3"></span>
+
+                  <!-- Center Hexagon Segments (372w / 744w) -->
+                  <img
+                    class="mx-hero-seg mx-hero-seg--1"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg1-top-dark-372.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg1-top-dark-372.webp 372w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg1-top-dark-744.webp 744w"
+                    alt=""
+                    width="372"
+                    height="372"
+                    decoding="async"
+                  />
+                  <img
+                    class="mx-hero-seg mx-hero-seg--2"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg2-top-right-lime-372.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg2-top-right-lime-372.webp 372w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg2-top-right-lime-744.webp 744w"
+                    alt=""
+                    width="372"
+                    height="372"
+                    decoding="async"
+                  />
+                  <img
+                    class="mx-hero-seg mx-hero-seg--3"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg3-left-dark-372.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg3-left-dark-372.webp 372w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg3-left-dark-744.webp 744w"
+                    alt=""
+                    width="372"
+                    height="372"
+                    decoding="async"
+                  />
+                  <img
+                    class="mx-hero-seg mx-hero-seg--4"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg4-right-green-372.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg4-right-green-372.webp 372w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg4-right-green-744.webp 744w"
+                    alt=""
+                    width="372"
+                    height="372"
+                    decoding="async"
+                  />
+                  <img
+                    class="mx-hero-seg mx-hero-seg--5"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg5-bottom-left-372.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg5-bottom-left-372.webp 372w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg5-bottom-left-744.webp 744w"
+                    alt=""
+                    width="372"
+                    height="372"
+                    decoding="async"
+                  />
+                  <img
+                    class="mx-hero-seg mx-hero-seg--6"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg6-bottom-right-372.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg6-bottom-right-372.webp 372w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/seg6-bottom-right-744.webp 744w"
+                    alt=""
+                    width="372"
+                    height="372"
+                    decoding="async"
+                  />
+
+                  <!-- Gold Drop (372w / 744w) -->
+                  <img
+                    class="mx-hero-drop"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/drop-gold-372.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/drop-gold-372.webp 372w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/drop-gold-744.webp 744w"
+                    alt=""
+                    width="372"
+                    height="372"
+                    decoding="async"
+                  />
+                </div>
+
+                <!-- Arabic & English Wordmarks -->
+                <div class="mx-hero__wordmarks">
+                  <img
+                    class="mx-hero-wordmark mx-hero-wordmark--ar"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/arabic-wordmark-760.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/arabic-wordmark-760.webp 760w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/arabic-wordmark-1518.webp 1518w"
+                    alt="مصادر"
+                    width="1518"
+                    height="563"
+                    decoding="async"
+                    onerror="if(!this.dataset.fallback){this.dataset.fallback=1;this.src='/assets/web/arabic-wordmark-1518.webp';this.srcset='';}"
+                  />
+                  <img
+                    class="mx-hero-wordmark mx-hero-wordmark--en"
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/english-wordmark-760.webp"
+                    srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/english-wordmark-760.webp 760w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/hero/english-wordmark-1518.webp 1518w"
+                    alt="masader"
+                    width="1518"
+                    height="219"
+                    decoding="async"
+                    onerror="if(!this.dataset.fallback){this.dataset.fallback=1;this.src='/assets/web/english-wordmark-1518.webp';this.srcset='';}"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: How The Loop Closes (mx-loop, mx-light) -->
+      <section id="mx-loop" class="mx-loop mx-light" aria-label="How The Loop Closes">
+        <div class="mx-container">
+          <!-- Section Header Block -->
+          <div class="mx-loop__header">
+            <div class="mx-eyebrow">How the loop closes</div>
+            <h2 class="mx-section-title">From spent oil to certified fuel, in three governed steps</h2>
+            <p class="mx-section-lead">Every batch is tracked from feedstock intake to certificate — the chain of custody a European buyer needs is built into how we run the plant, not bolted on afterward.</p>
+          </div>
+
+          <!-- Governance Checklist & Standards Scope Bento Grid -->
+          <div class="mx-loop__meta-grid">
+            <!-- Checklist (3 governed items) -->
+            <div class="mx-checklist" role="list" aria-label="Governed Standards">
+              <div class="mx-checklist__item" role="listitem">
+                <span class="mx-checklist__icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 8.5 6.5 12 13 4"></polyline>
+                  </svg>
+                </span>
+                <span class="mx-checklist__text">ISCC EU certified chain of custody</span>
+              </div>
+              <div class="mx-checklist__item" role="listitem">
+                <span class="mx-checklist__icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 8.5 6.5 12 13 4"></polyline>
+                  </svg>
+                </span>
+                <span class="mx-checklist__text">Fully traceable supply chain, intake to export</span>
+              </div>
+              <div class="mx-checklist__item" role="listitem">
+                <span class="mx-checklist__icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 8.5 6.5 12 13 4"></polyline>
+                  </svg>
+                </span>
+                <span class="mx-checklist__text">EN 14214 specifications, every batch</span>
+              </div>
+            </div>
+
+            <!-- Scope Box -->
+            <div class="mx-scope">
+              <h3 class="mx-scope__title">Scope</h3>
+              <p class="mx-scope__text">ISCC EU mass-balance certification covers UCOME, FAME and glycerin from intake through export documentation.</p>
+            </div>
+          </div>
+
+          <!-- Process Pipeline (Sticky / scroll-linked row with compositor progress beam) -->
+          <div class="mx-loop__pipeline">
+            <!-- Progress Beam Track -->
+            <div class="mx-pipeline__track" aria-hidden="true">
+              <div class="mx-pipeline__beam"></div>
+            </div>
+
+            <!-- 3 Governed Steps Grid -->
+            <div class="mx-loop__steps" role="list" aria-label="Process Steps">
+              <!-- Step 01 -->
+              <article class="mx-step mx-step--1 is-active" data-step="1" tabindex="0" role="listitem" aria-label="Step 01: Collect">
+                <div class="mx-step__indicator">
+                  <span class="mx-step__dot" aria-hidden="true"></span>
+                  <span class="mx-step__num font-mono">01</span>
+                </div>
+                <div class="mx-step__card">
+                  <div class="mx-step__icon-box" aria-hidden="true">
+                    <!-- Inline SVG: fa-code-branch -->
+                    <svg class="mx-step__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="6" cy="18" r="3"></circle>
+                      <circle cx="6" cy="6" r="3"></circle>
+                      <circle cx="18" cy="6" r="3"></circle>
+                      <path d="M6 9v6"></path>
+                      <path d="M18 9a9 9 0 0 1-9 9"></path>
+                    </svg>
+                  </div>
+                  <h3 class="mx-step__title">Collect</h3>
+                  <p class="mx-step__desc">Used cooking oil and recovered soap-stock / fatty-acid oils, sourced through our feedstock network and logged at intake.</p>
+                </div>
+              </article>
+
+              <!-- Step 02 -->
+              <article class="mx-step mx-step--2" data-step="2" tabindex="0" role="listitem" aria-label="Step 02: Process">
+                <div class="mx-step__indicator">
+                  <span class="mx-step__dot" aria-hidden="true"></span>
+                  <span class="mx-step__num font-mono">02</span>
+                </div>
+                <div class="mx-step__card">
+                  <div class="mx-step__icon-box" aria-hidden="true">
+                    <!-- Inline SVG: fa-flask -->
+                    <svg class="mx-step__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M10 2v5.5L4.4 17.5A2 2 0 0 0 6.1 21h11.8a2 2 0 0 0 1.7-3.5L14 7.5V2"></path>
+                      <path d="M8.5 2h7"></path>
+                      <path d="M7 16h10"></path>
+                    </svg>
+                  </div>
+                  <h3 class="mx-step__title">Process</h3>
+                  <p class="mx-step__desc">Transesterification, separation, vacuum methanol recovery and distillation engineered with CARBON — every unit in the train, holding EN 14214 at every batch.</p>
+                </div>
+              </article>
+
+              <!-- Step 03 -->
+              <article class="mx-step mx-step--3" data-step="3" tabindex="0" role="listitem" aria-label="Step 03: Certify & Export">
+                <div class="mx-step__indicator">
+                  <span class="mx-step__dot" aria-hidden="true"></span>
+                  <span class="mx-step__num font-mono">03</span>
+                </div>
+                <div class="mx-step__card">
+                  <div class="mx-step__icon-box" aria-hidden="true">
+                    <!-- Inline SVG: fa-award -->
+                    <svg class="mx-step__icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="8" r="6"></circle>
+                      <path d="M15.4 12.8L17 22l-5-3-5 3 1.6-9.2"></path>
+                    </svg>
+                  </div>
+                  <h3 class="mx-step__title">Certify &amp; Export</h3>
+                  <p class="mx-step__desc">ISCC EU mass-balance certified FAME, UCOME and glycerin, shipped Ex-Works Alexandria to buyers across Europe and Africa.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Our Products (mx-products, mx-dark) -->
+      <section id="mx-products" class="mx-products mx-dark" aria-label="Our Products">
+        <div class="mx-container">
+          <!-- Section Header Block -->
+          <div class="mx-products__header">
+            <div class="mx-products__meta">
+              <div class="mx-eyebrow">Our Products</div>
+              <h2 class="mx-section-title">Specification-backed, export ready</h2>
+              <p class="mx-section-lead">From the same UCOME stream entering our Alexandria plant, three certified lines leave it — biodiesel, glycerine, and soap-stock derivatives — each produced to specification, not approximated.</p>
+            </div>
+            <!-- Specification Line & Catalog Link -->
+            <div class="mx-products__spec-row">
+              <div class="mx-specline font-mono">12,000 MTPA certified capacity · Ex-Works Alexandria · EN 14214</div>
+              <a href="#" class="mx-link-catalog">
+                <span>All products &amp; data sheets</span>
+                <span class="mx-link-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bento Grid: Interactive Cards & Synced Multi-Layer Visual Stage -->
+          <div class="mx-products__grid">
+            <!-- Product Cards List -->
+            <div class="mx-products__list" role="list" aria-label="Product Lines">
+              <!-- Product 1: Biodiesel -->
+              <article class="mx-product-card mx-product--cylinder is-active" data-product="cylinder" tabindex="0" role="listitem" aria-label="Biodiesel — PURE & PUREMAX">
+                <div class="mx-product-card__content">
+                  <div class="mx-product-card__num font-mono">01</div>
+                  <h3 class="mx-product-card__title">Biodiesel — PURE &amp; PUREMAX</h3>
+                  <p class="mx-product-card__desc">FAME and UCOME from used cooking oil and fatty acids, produced to EN 14214 in two grades.</p>
+                </div>
+                <div class="mx-product-card__action">
+                  <a href="#" class="mx-btn mx-btn--ghost mx-product-btn">Data sheet</a>
+                </div>
+              </article>
+
+              <!-- Product 2: Glycerine -->
+              <article class="mx-product-card mx-product--beaker" data-product="beaker" tabindex="0" role="listitem" aria-label="Crude & Technical Glycerine">
+                <div class="mx-product-card__content">
+                  <div class="mx-product-card__num font-mono">02</div>
+                  <h3 class="mx-product-card__title">Crude &amp; Technical Glycerine</h3>
+                  <p class="mx-product-card__desc">Recovered with distillation residue and methanol from every production stream.</p>
+                </div>
+                <div class="mx-product-card__action">
+                  <a href="#" class="mx-btn mx-btn--ghost mx-product-btn">Data sheet</a>
+                </div>
+              </article>
+
+              <!-- Product 3: Soap-Stock -->
+              <article class="mx-product-card mx-product--barrel" data-product="barrel" tabindex="0" role="listitem" aria-label="Soap-Stock & Fatty-Acid Derivatives">
+                <div class="mx-product-card__content">
+                  <div class="mx-product-card__num font-mono">03</div>
+                  <h3 class="mx-product-card__title">Soap-Stock &amp; Fatty-Acid Derivatives</h3>
+                  <p class="mx-product-card__desc">From our CARBON-designed glycerolysis line — recovered value from every stream.</p>
+                </div>
+                <div class="mx-product-card__action">
+                  <a href="#" class="mx-btn mx-btn--ghost mx-product-btn">Data sheet</a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Synced Interactive Product Stage -->
+            <div class="mxp-stage has-active" aria-hidden="true">
+              <!-- Layer 1: Background -->
+              <div class="mxp-layer mxp-layer--bg">
+                <picture>
+                  <source type="image/avif" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/bg-558.avif 558w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/bg-1116.avif 1116w" sizes="(max-width: 768px) 558px, 1116px">
+                  <source type="image/webp" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/bg-558.webp 558w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/bg-1116.webp 1116w" sizes="(max-width: 768px) 558px, 1116px">
+                  <img src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/bg-1116.png" alt="" width="1116" height="1130" loading="lazy" decoding="async">
+                </picture>
+              </div>
+
+              <!-- Layer 2: Steel Drum / Barrel -->
+              <div class="mxp-layer mxp-layer--item mxp-layer--barrel" data-layer="barrel">
+                <picture class="mxp-layer__picture">
+                  <source type="image/avif" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/barrel-292.avif 292w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/barrel-584.avif 584w" sizes="(max-width: 768px) 292px, 584px">
+                  <source type="image/webp" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/barrel-292.webp 292w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/barrel-584.webp 584w" sizes="(max-width: 768px) 292px, 584px">
+                  <img src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/barrel-584.png" alt="Steel drum" width="584" height="1028" loading="lazy" decoding="async">
+                </picture>
+                <!-- Compositor-only light sweep overlay (§6.4) -->
+                <div class="mxp-sweep mxp-sweep--barrel" aria-hidden="true">
+                  <div class="mxp-sweep__beam"></div>
+                </div>
+              </div>
+
+              <!-- Layer 3: Graduated Cylinder (Default active) -->
+              <div class="mxp-layer mxp-layer--item mxp-layer--cylinder is-active" data-layer="cylinder">
+                <picture class="mxp-layer__picture">
+                  <source type="image/avif" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/cylinder-143.avif 143w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/cylinder-286.avif 286w" sizes="(max-width: 768px) 143px, 286px">
+                  <source type="image/webp" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/cylinder-143.webp 143w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/cylinder-286.webp 286w" sizes="(max-width: 768px) 143px, 286px">
+                  <img src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/cylinder-286.png" alt="Graduated cylinder of biodiesel" width="286" height="908" loading="lazy" decoding="async">
+                </picture>
+                <!-- Compositor-only light sweep overlay (§6.4) -->
+                <div class="mxp-sweep mxp-sweep--cylinder" aria-hidden="true">
+                  <div class="mxp-sweep__beam"></div>
+                </div>
+              </div>
+
+              <!-- Layer 4: Beaker -->
+              <div class="mxp-layer mxp-layer--item mxp-layer--beaker" data-layer="beaker">
+                <picture class="mxp-layer__picture">
+                  <source type="image/avif" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/beaker-138.avif 138w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/beaker-275.avif 275w" sizes="(max-width: 768px) 138px, 275px">
+                  <source type="image/webp" srcset="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/beaker-138.webp 138w, https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/beaker-275.webp 275w" sizes="(max-width: 768px) 138px, 275px">
+                  <img src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/products/beaker-275.png" alt="Beaker of glycerine" width="275" height="427" loading="lazy" decoding="async">
+                </picture>
+                <!-- Compositor-only light sweep overlay (§6.4) -->
+                <div class="mxp-sweep mxp-sweep--beaker" aria-hidden="true">
+                  <div class="mxp-sweep__beam"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Why Masader (mx-why, mx-light) -->
+      <section id="mx-why" class="mx-why mx-light" aria-label="Why Masader">
+        <div class="mx-container">
+          <!-- Section Header -->
+          <div class="mx-why__header">
+            <span class="mx-eyebrow">Why Masader</span>
+            <h2 class="mx-section-title">A model built for one purpose</h2>
+          </div>
+
+          <!-- Bento Grid: Value Pillars & Exploded Logo Stack (§6.5) -->
+          <div class="mx-why__grid">
+            <!-- Pillars Column (.mx-values) -->
+            <div class="mx-values" role="list" aria-label="Value Pillars">
+              <!-- Pillar 01: Integrity -->
+              <article class="mx-value mx-value--1" role="listitem" tabindex="0" data-pillar="01" aria-label="Pillar 01: Integrity">
+                <div class="mx-value__card">
+                  <div class="mx-value__spotlight" aria-hidden="true"></div>
+                  <div class="mx-value__top">
+                    <span class="mx-value__num">01</span>
+                    <span class="mx-value__indicator" aria-hidden="true"></span>
+                  </div>
+                  <h3 class="mx-value__title">Integrity</h3>
+                  <p class="mx-value__desc">Honest specifications and full traceability, audited against EU requirements — not asserted, demonstrated.</p>
+                </div>
+              </article>
+
+              <!-- Pillar 02: Technology Edge -->
+              <article class="mx-value mx-value--2" role="listitem" tabindex="0" data-pillar="02" aria-label="Pillar 02: Technology Edge">
+                <div class="mx-value__card">
+                  <div class="mx-value__spotlight" aria-hidden="true"></div>
+                  <div class="mx-value__top">
+                    <span class="mx-value__num">02</span>
+                    <span class="mx-value__indicator" aria-hidden="true"></span>
+                  </div>
+                  <h3 class="mx-value__title">Technology Edge</h3>
+                  <p class="mx-value__desc">Every process unit engineered with our technology partner, <a href="#" class="mx-value__link">CARBON Engineering &amp; Consultancy</a>.<span class="sr-only">Every process unit engineered with our technology partner, CARBON Engineering &amp; Consultancy.</span></p>
+                </div>
+              </article>
+
+              <!-- Pillar 03: Diversity & Agility -->
+              <article class="mx-value mx-value--3" role="listitem" tabindex="0" data-pillar="03" aria-label="Pillar 03: Diversity &amp; Agility">
+                <div class="mx-value__card">
+                  <div class="mx-value__spotlight" aria-hidden="true"></div>
+                  <div class="mx-value__top">
+                    <span class="mx-value__num">03</span>
+                    <span class="mx-value__indicator" aria-hidden="true"></span>
+                  </div>
+                  <h3 class="mx-value__title">Diversity &amp; Agility</h3>
+                  <p class="mx-value__desc">Flexible across feedstocks, direct in how we deal with buyers and suppliers — no rigid terms.</p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Exploded Logo Stack Visual (.mx-why__visual) (§6.5) -->
+            <div class="mx-why__visual" aria-hidden="true">
+              <div class="mx-why__stage-box">
+                <div class="mx-why__stage-grid"></div>
+                <div class="mx-why__target-cross mx-why__target-cross--tl">+</div>
+                <div class="mx-why__target-cross mx-why__target-cross--tr">+</div>
+                <div class="mx-why__target-cross mx-why__target-cross--bl">+</div>
+                <div class="mx-why__target-cross mx-why__target-cross--br">+</div>
+
+                <!-- Exploded Logo Stack Container -->
+                <div class="mx-logo-stack" id="mx-logo-stack">
+                  <!-- Base Silhouette -->
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/logo-icon-full.webp"
+                    alt=""
+                    class="mx-logo-stack__base"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <!-- Six Logo Segments + Gold Drop -->
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/seg1-top-dark.webp"
+                    alt=""
+                    class="mx-logo-stack__seg mx-logo-stack__seg--1"
+                    data-seg="1"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/seg2-top-right-lime.webp"
+                    alt=""
+                    class="mx-logo-stack__seg mx-logo-stack__seg--2"
+                    data-seg="2"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/seg3-left-dark.webp"
+                    alt=""
+                    class="mx-logo-stack__seg mx-logo-stack__seg--3"
+                    data-seg="3"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/seg4-right-green.webp"
+                    alt=""
+                    class="mx-logo-stack__seg mx-logo-stack__seg--4"
+                    data-seg="4"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/seg5-bottom-left.webp"
+                    alt=""
+                    class="mx-logo-stack__seg mx-logo-stack__seg--5"
+                    data-seg="5"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/seg6-bottom-right.webp"
+                    alt=""
+                    class="mx-logo-stack__seg mx-logo-stack__seg--6"
+                    data-seg="6"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="https://masaderbio.com/web/wp-content/themes/masader-child/assets/img/logo/drop-gold.webp"
+                    alt=""
+                    class="mx-logo-stack__drop"
+                    data-seg="drop"
+                    width="372"
+                    height="442"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Sustainability & Certifications (mx-sustain, mx-dark) -->
+      <section id="mx-sustain" class="mx-sustain mx-dark" aria-label="Sustainability &amp; Certifications">
+        <div class="mx-container">
+          <div class="mx-sustain__grid">
+            <!-- Left Column: Scope & Action -->
+            <div class="mx-sustain__content">
+              <span class="mx-eyebrow">Sustainability &amp; Certifications</span>
+              <h2 class="mx-section-title">See the ISCC EU certificate and our GHG methodology</h2>
+              <p class="mx-section-lead">Certificate number, scope, mass-balance approach, and the circular-economy impact behind every tonne we ship.</p>
+              <div class="mx-sustain__actions">
+                <a href="#" class="mx-btn mx-btn--primary">View Certifications</a>
+              </div>
+            </div>
+
+            <!-- Right Column: Sustainability Gauge Visual (§6.6) -->
+            <div class="mx-sustain__visual">
+              <div class="mx-sustain__card">
+                <div class="mx-gauge mx-ring" aria-label="90% GHG reduction" role="img">
+                  <svg class="mx-gauge__svg" viewBox="0 0 300 300" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="mxv9ea0009-g" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="var(--mx-gold)" />
+                        <stop offset="100%" stop-color="var(--mx-leaf)" />
+                      </linearGradient>
+                    </defs>
+
+                    <!-- Ticks at Radius 140 (Fade in with 12ms stagger §6.6) -->
+                    <g class="mx-gauge__ticks" id="mx-gauge-ticks">
+                      <line class="mx-gauge__tick" x1="150.0" y1="14.0" x2="150.0" y2="7.0" style="--tick-i:0" />
+                      <line class="mx-gauge__tick" x1="173.6" y1="16.1" x2="174.8" y2="9.2" style="--tick-i:1" />
+                      <line class="mx-gauge__tick" x1="196.5" y1="22.2" x2="198.9" y2="15.6" style="--tick-i:2" />
+                      <line class="mx-gauge__tick" x1="218.0" y1="32.2" x2="221.5" y2="26.2" style="--tick-i:3" />
+                      <line class="mx-gauge__tick" x1="237.4" y1="45.8" x2="241.9" y2="40.5" style="--tick-i:4" />
+                      <line class="mx-gauge__tick" x1="254.2" y1="62.6" x2="259.5" y2="58.1" style="--tick-i:5" />
+                      <line class="mx-gauge__tick" x1="267.8" y1="82.0" x2="273.8" y2="78.5" style="--tick-i:6" />
+                      <line class="mx-gauge__tick" x1="277.8" y1="103.5" x2="284.4" y2="101.1" style="--tick-i:7" />
+                      <line class="mx-gauge__tick" x1="283.9" y1="126.4" x2="290.8" y2="125.2" style="--tick-i:8" />
+                      <line class="mx-gauge__tick" x1="286.0" y1="150.0" x2="293.0" y2="150.0" style="--tick-i:9" />
+                      <line class="mx-gauge__tick" x1="283.9" y1="173.6" x2="290.8" y2="174.8" style="--tick-i:10" />
+                      <line class="mx-gauge__tick" x1="277.8" y1="196.5" x2="284.4" y2="198.9" style="--tick-i:11" />
+                      <line class="mx-gauge__tick" x1="267.8" y1="218.0" x2="273.8" y2="221.5" style="--tick-i:12" />
+                      <line class="mx-gauge__tick" x1="254.2" y1="237.4" x2="259.5" y2="241.9" style="--tick-i:13" />
+                      <line class="mx-gauge__tick" x1="237.4" y1="254.2" x2="241.9" y2="259.5" style="--tick-i:14" />
+                      <line class="mx-gauge__tick" x1="218.0" y1="267.8" x2="221.5" y2="273.8" style="--tick-i:15" />
+                      <line class="mx-gauge__tick" x1="196.5" y1="277.8" x2="198.9" y2="284.4" style="--tick-i:16" />
+                      <line class="mx-gauge__tick" x1="173.6" y1="283.9" x2="174.8" y2="290.8" style="--tick-i:17" />
+                      <line class="mx-gauge__tick" x1="150.0" y1="286.0" x2="150.0" y2="293.0" style="--tick-i:18" />
+                      <line class="mx-gauge__tick" x1="126.4" y1="283.9" x2="125.2" y2="290.8" style="--tick-i:19" />
+                      <line class="mx-gauge__tick" x1="103.5" y1="277.8" x2="101.1" y2="284.4" style="--tick-i:20" />
+                      <line class="mx-gauge__tick" x1="82.0" y1="267.8" x2="78.5" y2="273.8" style="--tick-i:21" />
+                      <line class="mx-gauge__tick" x1="62.6" y1="254.2" x2="58.1" y2="259.5" style="--tick-i:22" />
+                      <line class="mx-gauge__tick" x1="45.8" y1="237.4" x2="40.5" y2="241.9" style="--tick-i:23" />
+                      <line class="mx-gauge__tick" x1="32.2" y1="218.0" x2="26.2" y2="221.5" style="--tick-i:24" />
+                      <line class="mx-gauge__tick" x1="22.2" y1="196.5" x2="15.6" y2="198.9" style="--tick-i:25" />
+                      <line class="mx-gauge__tick" x1="16.1" y1="173.6" x2="9.2" y2="174.8" style="--tick-i:26" />
+                      <line class="mx-gauge__tick" x1="14.0" y1="150.0" x2="7.0" y2="150.0" style="--tick-i:27" />
+                      <line class="mx-gauge__tick" x1="16.1" y1="126.4" x2="9.2" y2="125.2" style="--tick-i:28" />
+                      <line class="mx-gauge__tick" x1="22.2" y1="103.5" x2="15.6" y2="101.1" style="--tick-i:29" />
+                      <line class="mx-gauge__tick" x1="32.2" y1="82.0" x2="26.2" y2="78.5" style="--tick-i:30" />
+                      <line class="mx-gauge__tick" x1="45.8" y1="62.6" x2="40.5" y2="58.1" style="--tick-i:31" />
+                      <line class="mx-gauge__tick" x1="62.6" y1="45.8" x2="58.1" y2="40.5" style="--tick-i:32" />
+                      <line class="mx-gauge__tick" x1="82.0" y1="32.2" x2="78.5" y2="26.2" style="--tick-i:33" />
+                      <line class="mx-gauge__tick" x1="103.5" y1="22.2" x2="101.1" y2="15.6" style="--tick-i:34" />
+                      <line class="mx-gauge__tick" x1="126.4" y1="16.1" x2="125.2" y2="9.2" style="--tick-i:35" />
+                    </g>
+
+                    <!-- Background Track (Radius 118) -->
+                    <circle
+                      class="mx-gauge__track"
+                      cx="150"
+                      cy="150"
+                      r="118"
+                      fill="none"
+                      stroke="rgba(157, 203, 91, 0.12)"
+                      stroke-width="10"
+                    />
+
+                    <!-- Progress Arc (Radius 118, stroke-dasharray 90 100 §6.6) -->
+                    <circle
+                      class="mx-gauge__progress"
+                      id="mx-gauge-progress"
+                      cx="150"
+                      cy="150"
+                      r="118"
+                      fill="none"
+                      stroke="url(#mxv9ea0009-g)"
+                      stroke-width="10"
+                      stroke-linecap="round"
+                      pathLength="100"
+                      stroke-dasharray="90 100"
+                      stroke-dashoffset="0"
+                      transform="rotate(-90 150 150)"
+                    />
+                  </svg>
+
+                  <!-- Numeric Counter Display (aria-hidden, static HTML has 90) -->
+                  <div class="mx-gauge__center" aria-hidden="true">
+                    <div class="mx-gauge__metric">
+                      <span class="mx-gauge__value" id="mx-gauge-val">90</span>
+                      <span class="mx-gauge__unit">%</span>
+                    </div>
+                    <span class="mx-gauge__label">GHG reduction</span>
+                  </div>
+                  <span class="sr-only">90% GHG reduction</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Where It Goes (mx-where, mx-dark) -->
+      <section id="mx-where" class="mx-where mx-dark" aria-label="Where It Goes">
+        <div class="mx-container">
+          <div class="mx-where__inner">
+            <span class="mx-eyebrow">Where it goes</span>
+            <h2 class="mx-where__headline">
+              <span class="mx-word">Exporting</span>
+              <span class="mx-word">across</span>
+              <span class="mx-word mx-word--gradient">Europe</span>
+              <span class="mx-word mx-word--gradient">and</span>
+              <span class="mx-word mx-word--gradient">Africa,</span>
+              <span class="mx-word mx-word--gradient">Ex-Works</span>
+              <span class="mx-word mx-word--gradient">Alexandria</span>
+              <span class="mx-word">—</span>
+              <span class="mx-word">and</span>
+              <span class="mx-word">supplying</span>
+              <span class="mx-word">Egypt's</span>
+              <span class="mx-word">own</span>
+              <span class="mx-word mx-word--gradient">Suez</span>
+              <span class="mx-word mx-word--gradient">Canal</span>
+              <span class="mx-word mx-word--gradient">Authority.</span>
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: News & Insights (mx-news, mx-light) -->
+      <section id="mx-news" class="mx-news mx-light" aria-label="News &amp; Insights">
+        <div class="mx-container">
+          <div class="mx-news__card">
+            <div class="mx-news__spotlight" aria-hidden="true"></div>
+            <div class="mx-news__header">
+              <span class="mx-eyebrow">News &amp; Insights</span>
+              <h2 class="mx-section-title">Updates on our certification programme and the export market</h2>
+            </div>
+            <div class="mx-news__body">
+              <p class="mx-section-lead">Plant updates, ISCC audit milestones, and export-market notes — coming soon.</p>
+              <div class="mx-news__actions">
+                <a href="https://masaderbio.com/web/news/" class="mx-btn mx-btn--ghost mx-btn--light-ghost">
+                  <span>Read all news</span>
+                  <svg class="mx-btn__icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8: Final Call to Action (mx-cta, mx-light) -->
+      <section id="mx-cta" class="mx-cta mx-light" aria-label="Call To Action">
+        <div class="mx-container">
+          <div class="mx-cta__card">
+            <div class="mx-cta__spotlight" aria-hidden="true"></div>
+            <div class="mx-cta__content">
+              <h2 class="mx-section-title">Ready to bring Masader into your supply chain?</h2>
+              <p class="mx-section-lead">Talk to us about offtake volumes, samples, or feedstock partnerships.</p>
+            </div>
+            <div class="mx-cta__actions">
+              <a href="tel:+20347011465" class="mx-btn mx-btn--phone">
+                <svg class="mx-btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span>+2 03 4701 1465</span>
+              </a>
+              <a href="https://masaderbio.com/web/contact/" class="mx-btn mx-btn--dark">
+                <span>Contact Us</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Section 9: Footer (mx-footer, mx-dark) -->
+    <footer id="mx-footer" class="mx-footer mx-dark" role="contentinfo">
+      <div class="mx-container">
+        <div class="mx-footer__grid">
+          <!-- Column 1: Brand & Location -->
+          <div class="mx-footer__brand">
+            <a href="/" class="mx-footer__brand-link" aria-label="Masader">
+              <img
+                src="https://masaderbio.com/web/wp-content/uploads/2026/10/masader-logo.png"
+                srcset="https://masaderbio.com/web/wp-content/uploads/2026/10/masader-logo.png 1200w, https://masaderbio.com/web/wp-content/uploads/2026/10/masader-logo-1024x343.png 1024w, https://masaderbio.com/web/wp-content/uploads/2026/10/masader-logo-768x257.png 768w, https://masaderbio.com/web/wp-content/uploads/2026/10/masader-logo-300x101.png 300w"
+                sizes="(max-width: 640px) 180px, 220px"
+                width="1200"
+                height="402"
+                alt="Masader"
+                loading="lazy"
+                decoding="async"
+                class="mx-footer__logo"
+              />
+            </a>
+            <address class="mx-footer__address">
+              Km 26 Alexandria–Cairo Desert Road,<br>
+              Alexandria, Egypt
+            </address>
+          </div>
+
+          <!-- Column 2: Company -->
+          <div class="mx-footer__col">
+            <h4 class="mx-footer__title">Company</h4>
+            <ul class="mx-footer__links" role="list">
+              <li><a href="#" class="mx-footer__link">About Us</a></li>
+              <li><a href="#" class="mx-footer__link">Facilities &amp; Process</a></li>
+              <li><a href="#" class="mx-footer__link">Markets &amp; Trading</a></li>
+              <li><a href="#" class="mx-footer__link">Careers</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Products -->
+          <div class="mx-footer__col">
+            <h4 class="mx-footer__title">Products</h4>
+            <ul class="mx-footer__links" role="list">
+              <li><a href="#" class="mx-footer__link">Biodiesel — PURE &amp; PUREMAX</a></li>
+              <li><a href="#" class="mx-footer__link">Technical Glycerine</a></li>
+              <li><a href="#" class="mx-footer__link">Soap-Stock Derivatives</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Useful Links & Working Hours -->
+          <div class="mx-footer__col">
+            <h4 class="mx-footer__title">Useful Links</h4>
+            <ul class="mx-footer__links" role="list">
+              <li><a href="#" class="mx-footer__link">ISCC EU Certificate</a></li>
+              <li><a href="#" class="mx-footer__link">Terms &amp; Conditions</a></li>
+              <li><a href="#" class="mx-footer__link">Privacy Policy</a></li>
+            </ul>
+
+            <div class="mx-footer__hours">
+              <h4 class="mx-footer__title">Working Hours</h4>
+              <p class="mx-footer__hours-text">
+                Sun–Sat 09:00–23:00<br>
+                Phone support 24/7
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Native ES Module Entry Point -->
+    <script type="module" src="/js/main.js"></script>
   </body>
 </html>

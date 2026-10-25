@@ -1,0 +1,44 @@
+/* ==========================================================================
+   MASADER LAYOUT ARCHITECTURE (layout.css)
+   Container systems, grid baselines, and landmark positioning
+   ========================================================================== */
+
+.mx-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.mx-site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header);
+}
+
+.mx-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.mx-menu-overlay[aria-hidden="false"] {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+#mx-main {
+  position: relative;
+  width: 100%;
+  z-index: var(--z-base);
+}
+
+section[id^="mx-"],
+footer.mx-footer {
+  position: relative;
+  width: 100%;
+}
